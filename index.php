@@ -1,14 +1,13 @@
 <?php
 
-// Le require est direct, il n'y a pas de dossier à remonter
-require_once __DIR__ . '/vendor/autoload.php';
+define('ROOT_PATH', __DIR__ . DIRECTORY_SEPARATOR);
 
-use App\Service\Router;
-use Dotenv\Dotenv;
+require_once ROOT_PATH . 'vendor/autoload.php';
 
-// Le chemin .env est maintenant le dossier courant (la racine)
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
 
-$router = new Router();
-$router->run();
+
+
+
+// ...
+$router = new Router(); 
+$router->handleRequest($_GET);;

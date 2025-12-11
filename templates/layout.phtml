@@ -7,7 +7,12 @@
 </head>
 <body>
     <?php
-        require "templates/partials/_nav.phtml";
+        
+        
+        
+        // Note : $template doit être la variable extraite des données par AbstractController::render()
+        require "templates/partials/$template.phtml";
+    
     ?>
 </body>
 </html>

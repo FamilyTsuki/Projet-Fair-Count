@@ -6,7 +6,14 @@
         "psr-4": {
 
             "": "./"
-        }
+        },
+        "files": [
+            "Service/Router.php",
+            "Controller/PageController.php",
+            "Controller/AbstractController.php",
+            "Manager/AbstractManager.php",
+            "Service/Database.php"  
+        ]
     },
     "require": {
         "vlucas/phpdotenv": "^5.5"

@@ -1,7 +1,5 @@
 <?php
 
-namespace App\Manager;
-
 use App\Service\Database;
 use PDO;
 

@@ -29,7 +29,16 @@
                     $ctrl = new PageController();
                     $ctrl->creat();
                 }
-
+                else if ($get["route"] === "auth/login") 
+                {
+                    $ctrl = new AuthController(); 
+                    $ctrl->login(); 
+                }
+                else if ($get["route"] === "auth/register") 
+                {
+                    $ctrl = new AuthController(); 
+                    $ctrl->register();
+                }
                 else
                 {
                     $ctrl = new PageController();

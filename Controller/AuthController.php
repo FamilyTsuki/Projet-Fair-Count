@@ -39,7 +39,7 @@ class AuthController extends AbstractController
             }
         }
 
-        $this->render('creat', ['error' => $error]);
+        $this->render('../auth/register', ['error' => $error]);
     }
 
     /**
@@ -79,7 +79,7 @@ class AuthController extends AbstractController
             }
         }
         
-        $this->render('connect', ['error' => $error]);
+        $this->render('../auth/login', ['error' => $error]);
     }
 
     /**

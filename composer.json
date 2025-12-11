@@ -1,10 +1,10 @@
 {
     "name": "groupe/faircount",
-    "description": "Projet Fair Count - Gestion de comptes entre amis",
+    "description": "Projet Fair Count - Gestion de comptes entre amis (Structure à plat)",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "./" 
         }
     },
     "require": {

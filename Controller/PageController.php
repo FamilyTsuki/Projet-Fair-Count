@@ -8,7 +8,6 @@ class PageController extends AbstractController
     public function home() : void
     {
         
-        
 
         $this->render("home", [
             "pageTitle" => "link count",
@@ -21,14 +20,18 @@ class PageController extends AbstractController
     public function depance() : void
     {
         
+        $userManager = new UsersManager();
 
+        $users = $userManager->getAllUsers(); 
         if (isset($_GET['id'])) 
         {
             $id = (int)$_GET['id'];
-            
+            $user = $userManager->getUserById($id); 
             $this->render("depance", [
                 
-                "pageTitle" => "Détail de la depance"
+                "pageTitle" => "Détail de la depance",
+                "users" => $users,
+                "user"=> $user
             ]);
         } 
         else
@@ -37,7 +40,8 @@ class PageController extends AbstractController
         
         $this->render("depance", [
             
-            "pageTitle" => "Les depance"
+            "pageTitle" => "Les depance",
+            "users" => $users
         ]);
         }
     }
@@ -45,14 +49,18 @@ class PageController extends AbstractController
     // --- GESTION DES JOUEURS ---
   public function ranbourccemant() : void
     {
+        $userManager = new UsersManager();
 
+        $users = $userManager->getAllUsers();
         if (isset($_GET['id'])) 
         {
             $id = (int)$_GET['id'];
-
+            $user = $userManager->getUserById($id); 
             $this->render("ranbourccemant", [
 
-                "pageTitle" => "Profil du ranbourccemant"
+                "pageTitle" => "Profil du ranbourccemant",
+                "users"=> $users,
+                "user"=> $user
             ]);
         } 
         else 
@@ -61,7 +69,8 @@ class PageController extends AbstractController
 
             $this->render("ranbourccemant", [
 
-                "pageTitle" => "Les ranbourccemant"
+                "pageTitle" => "Les ranbourccemant",
+                "users"=> $users
             ]);
         }
     }

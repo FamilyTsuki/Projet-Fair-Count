@@ -5,7 +5,7 @@ class Categories {
     private $type;
     public function __construct($id, $type) {
         $this->id = $id;
-        $this->email = $type;
+        $this->type = $type;
     }
     public function getId() {
         return $this->id;

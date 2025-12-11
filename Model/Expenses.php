@@ -10,12 +10,12 @@ class User {
     private $category_id;
     public function __construct($id, $title, $amount, $date, $created_at, $paid_by_id, $category_id) {
         $this->id = $id;
-        $this->email = $title;
-        $this->password = $amount;
+        $this->title = $title;
+        $this->amount = $amount;
         $this->username = $username;
         $this->created_at = $created_at;
-        $this->created_at = $paid_by_id;
-        $this->created_at = $Category_id;
+        $this->paid_by_id = $paid_by_id;
+        $this->Category_id = $Category_id;
     }
     public function getId() {
         return $this->id;

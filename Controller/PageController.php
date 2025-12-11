@@ -1,5 +1,6 @@
 <?php
 
+
 class PageController extends AbstractController 
 {
     // --- ACCUEIL ---

@@ -1,6 +1,6 @@
 <?php
 
-use App\Service\Database;
+
 use PDO;
 
 abstract class AbstractManager
@@ -9,8 +9,8 @@ abstract class AbstractManager
 
     public function __construct()
     {
-        $this->pdo = Database::getConnection();
+        $this->pdo = Database::getConnection(); 
     }
     
-    // Méthodes génériques possibles ici (findAll, findById...)
+    // ...
 }

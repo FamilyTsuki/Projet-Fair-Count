@@ -11,6 +11,7 @@
             "Service/Router.php",
             "Controller/PageController.php",
             "Controller/AbstractController.php",
+            "Controller/DefaultController.php",
             "Manager/AbstractManager.php",
             "Service/Database.php"  
         ]

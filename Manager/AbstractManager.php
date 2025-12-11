@@ -1,11 +1,7 @@
 <?php
-
-
-use PDO;
-
 abstract class AbstractManager
 {
-    
+    protected PDO $db;
 
     public function __construct()
     {
@@ -16,13 +12,12 @@ abstract class AbstractManager
         $port = $_ENV['DB_PORT'];
         $connexionString = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8";
 
-        $user = "votre_username";
-        $password = "votre_password";
+        
 
-        $db = new PDO(
+        $this->db = new PDO(
             $connexionString,
             $user,
-            $password
+            $pass
 );
 
 

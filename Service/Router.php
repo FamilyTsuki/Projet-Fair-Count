@@ -23,6 +23,11 @@
                     $ctrl = new PageController();
                     $ctrl->home();
                 }
+                else if ($get["route"] === "connect")
+                {
+                    $ctrl = new PageController();
+                    $ctrl->connect();
+                }
 
                 else
                 {

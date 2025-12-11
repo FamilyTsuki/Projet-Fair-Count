@@ -65,6 +65,14 @@ class PageController extends AbstractController
             ]);
         }
     }
+     public function connect() : void
+    {
+        $this->render("connect", [
+            "pageTitle" => "link count",
+            
+        ]);
+
+    }
    // --- ERREUR 404 ---
     public function notFound() : void
     {

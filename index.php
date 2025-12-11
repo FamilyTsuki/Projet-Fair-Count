@@ -6,7 +6,7 @@ use App\Service\Router;
 use Dotenv\Dotenv;
 
 // Chargement des variables d'environnement
-$dotenv = Dotenv::createImmutable(__DIR__ . '/..');
+$dotenv = Dotenv::createImmutable(__DIR__ . '/..'); 
 $dotenv->load();
 
 // Lancement du routeur

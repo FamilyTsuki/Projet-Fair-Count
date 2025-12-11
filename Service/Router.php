@@ -5,22 +5,16 @@
         {
             if(isset($get["route"]))
             {
-                if($get["route"] === "team")
+                if($get["route"] === "dépance")
                 {
                     $ctrl = new PageController();
                     $ctrl->team();
                 }
 
-                else if ($get["route"] === "player")
+                else if ($get["route"] === "ranbourcemant")    
                 {
                     $ctrl = new PageController();
                     $ctrl->player();
-                }
-
-                else if ($get["route"] === "match")
-                {
-                    $ctrl = new PageController();
-                    $ctrl->match();
                 }
 
                 else

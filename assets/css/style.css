@@ -33,5 +33,11 @@ nav a:hover {
     margin-top: 10%;
 }
 .img {
-    text-align: right;
+    position: absolute;
+    right: 0px;
+    width: 50%;
+
 }
+.img img {
+    width: 100%;
+} 

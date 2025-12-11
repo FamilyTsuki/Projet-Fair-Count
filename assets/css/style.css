@@ -41,3 +41,23 @@ nav a:hover {
 .img img {
     width: 100%;
 } 
+h1.A04 {
+    font-size: 10rem;
+}
+h2.A04 {
+    position: relative;
+    font-size: 3rem;
+}
+p.deso {
+    margin-top: 5%;
+    margin-bottom: 1%;
+    font-size: 1.5rem;
+    
+}
+p.domage {
+    position: absolute;
+    right: 10vw;
+    top: 20%;
+    font-size: 8rem;
+    font-weight: 800;
+}

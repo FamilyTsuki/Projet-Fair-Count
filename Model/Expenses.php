@@ -15,7 +15,7 @@ class User {
         $this->username = $username;
         $this->created_at = $created_at;
         $this->paid_by_id = $paid_by_id;
-        $this->Category_id = $Category_id;
+        $this->Category_id = $category_id;
     }
     public function getId() {
         return $this->id;

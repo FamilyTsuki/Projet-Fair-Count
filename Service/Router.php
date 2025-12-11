@@ -15,13 +15,13 @@
                 else if ($get["route"] === "ranbourccemant")    
                 {
                     $ctrl = new PageController();
-                    $ctrl->player();
+                    $ctrl->ranbourccemant();
                 }
 
                 else if ($get["route"] === "home")
                 {
                     $ctrl = new PageController();
-                    $ctrl->match();
+                    $ctrl->home();
                 }
 
                 else

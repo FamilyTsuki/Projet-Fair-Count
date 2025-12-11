@@ -1,6 +1,6 @@
 <?php
 
-class User {
+class Reimbursements {
     private $id;
     private $amount;
     private $date;

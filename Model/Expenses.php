@@ -1,6 +1,6 @@
 <?php
 
-class User {
+class Expenses {
     private $id;
     private $title;
     private $amount;
@@ -12,7 +12,6 @@ class User {
         $this->id = $id;
         $this->title = $title;
         $this->amount = $amount;
-        $this->username = $username;
         $this->created_at = $created_at;
         $this->paid_by_id = $paid_by_id;
         $this->Category_id = $category_id;

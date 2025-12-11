@@ -2,18 +2,27 @@
 
 nav {
     background-color: #f7f6ff;
+    justify-content: space-between;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+}
+nav div{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    width: 60%;
     gap:15%;
-    height: 60px;
-    
 }
-nav a ,p {
+nav a.connect {
+    text-align: right;
+    margin-right: 5vw;
+}
+nav a , nav p {
     text-decoration: none;
     color: black;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 1.3rem;
     padding: 15px 0;
 }
 nav a:hover {

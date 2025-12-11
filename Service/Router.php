@@ -18,11 +18,7 @@
                     $ctrl->ranbourccemant();
                 }
 
-                else if ($get["route"] === "home")
-                {
-                    $ctrl = new PageController();
-                    $ctrl->home();
-                }
+                
                 else if ($get["route"] === "connect")
                 {
                     $ctrl = new PageController();

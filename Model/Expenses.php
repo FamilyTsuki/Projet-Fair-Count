@@ -12,6 +12,7 @@ class Expenses {
         $this->id = $id;
         $this->title = $title;
         $this->amount = $amount;
+        $this->date = $date;
         $this->created_at = $created_at;
         $this->paid_by_id = $paid_by_id;
         $this->Category_id = $category_id;
@@ -35,6 +36,6 @@ class Expenses {
         return $this->paid_by_id;
     }
     public function getCategory_id() {
-        return $this->Category_id;
+        return $this->category_id;
     }
 }

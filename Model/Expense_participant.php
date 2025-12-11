@@ -1,6 +1,6 @@
 <?php
 
-class User {
+class Expense_participant {
     private $expense_id;
     private $user_id;
     public function __construct($expense_id, $user_id) {

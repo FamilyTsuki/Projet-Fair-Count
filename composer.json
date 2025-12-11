@@ -3,16 +3,13 @@
     "description": "Projet Fair Count - Gestion de comptes entre amis (Structure à plat)",
     "type": "project",
     "autoload": {
-        "psr-4": {
-
-            "": "./"
-        },
+        
         "classmap": [
             "Controller/",
             "Manager/",
             "Model/",
             "Service/"
-            ]
+        ]
     },
     "require": {
         "vlucas/phpdotenv": "^5.5"

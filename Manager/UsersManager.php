@@ -10,20 +10,19 @@ class UsersManager extends AbstractManager
 
     public function getUserById(int $id) : User
     {
-        $query = $this->db->prepare('SELECT id , email, password ,players.team FROM users 
-                                            WHERE players.id = :id ;' );
+        $query = $this->db->prepare('SELECT id , email, password ,username,created_at FROM users 
+                                            WHERE id = :id ;' );
         $parameters = [
             'id' => $id
         ];
         $query->execute($parameters);
         $result = $query->fetch(PDO::FETCH_ASSOC);
-        $User = new User($result["id"],$result["nickname"],$result["bio"],$result["portrait"], $result["team"]);
+        $User = new User($result["id"],$result["email"],$result["password"],$result["username"], $result["created_at"]);
         return $User;
     }
     public function getAllUsers() : array
     {
-        $query = $this->db->prepare("SELECT players.id , players.nickname,players.bio,media.url as portrait ,players.team FROM players 
-                                            JOIN media on players.portrait = media.id");
+        $query = $this->db->prepare("SELECT id , email, password ,username,created_at FROM users");
         $parameters = [
 
         ];
@@ -33,7 +32,8 @@ class UsersManager extends AbstractManager
 
         foreach($results as $result)
         {
-            $User = new User($result["id"],$result["nickname"],$result["bio"],$result["portrait"], $result["team"]);
+            $User = new User($result["id"],$result["email"],$result["password"],$result["username"], $result["created_at"]);
+        
             $Users[] = $User;
         }
         return $Users;

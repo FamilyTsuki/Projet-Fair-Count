@@ -1,0 +1,13 @@
+{
+    "name": "groupe/faircount",
+    "description": "Projet Fair Count - Gestion de comptes entre amis",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
+}

@@ -1,4 +1,4 @@
 /vendor
 .env
 .DS_Store
-.lock
+composer.lock

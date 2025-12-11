@@ -24,6 +24,11 @@
                     $ctrl = new PageController();
                     $ctrl->connect();
                 }
+                else if ($get["route"] === "creat")
+                {
+                    $ctrl = new PageController();
+                    $ctrl->creat();
+                }
 
                 else
                 {

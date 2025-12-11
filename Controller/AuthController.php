@@ -31,7 +31,7 @@ class AuthController extends AbstractController
                 
                 // Tente d'inscrire l'utilisateur (le Manager gère le hachage)
                 if ($manager->register($email, $password, $username)) {
-                    $this->redirect('index.php?route=auth/login'); // Redirection vers la page de connexion
+                    $this->redirect('index.php?route=connect'); // Redirection vers la page de connexion
                     return;
                 } else {
                     $error = "Cet email est déjà utilisé ou une erreur est survenue.";
@@ -39,7 +39,7 @@ class AuthController extends AbstractController
             }
         }
 
-        $this->render('auth/register', ['error' => $error]);
+        $this->render('creat', ['error' => $error]);
     }
 
     /**
@@ -69,7 +69,7 @@ class AuthController extends AbstractController
                     $_SESSION['user_id'] = $user->getId();
                     $_SESSION['username'] = $user->getUsername();
                     
-                    $this->redirect('index.php?route=home/index'); // Redirection vers l'accueil
+                    $this->redirect('index.php'); // Redirection vers l'accueil
                     return;
                 } else {
                     $error = "Identifiants invalides.";
@@ -79,7 +79,7 @@ class AuthController extends AbstractController
             }
         }
         
-        $this->render('auth/login', ['error' => $error]);
+        $this->render('connect', ['error' => $error]);
     }
 
     /**
@@ -94,6 +94,6 @@ class AuthController extends AbstractController
         session_unset();
         session_destroy();
         
-        $this->redirect('index.php?route=home/index');
+        $this->redirect('index.php');
     }
 }

@@ -9,7 +9,7 @@
             <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
         <?php endif; ?>
         
-        <form method="POST" action="index.php?route=auth/register">
+        <form method="POST" action="index.php?route=connect">
             <div class="mb-3">
                 <label for="username" class="form-label">Nom d'utilisateur</label>
                 <input type="text" class="form-control" id="username" name="username" required 
@@ -27,6 +27,6 @@
             </div>
             <button type="submit" class="btn btn-success">S'inscrire</button>
         </form>
-        <p class="mt-3">Déjà un compte ? <a href="index.php?route=auth/login">Se connecter</a></p>
+        <p class="mt-3">Déjà un compte ? <a href="?route=connect">Se connecter</a></p>
     </div>
 </div>

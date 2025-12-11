@@ -76,8 +76,16 @@ class PageController extends AbstractController
     }
      public function connect() : void
     {
-        $this->render("auth/login", [
-            "pageTitle" => "link count",
+        $this->render("../auth/login", [
+            "pageTitle" => "link count",    
+            
+        ]);
+
+    }
+    public function creat() : void
+    {
+        $this->render("../auth/register", [
+            "pageTitle" => "link count",    
             
         ]);
 

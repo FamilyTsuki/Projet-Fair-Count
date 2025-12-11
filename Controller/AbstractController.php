@@ -15,11 +15,11 @@ abstract class AbstractController
         
         // Démarre la bufferisation de sortie
         ob_start();
-        require_once __DIR__ . '/../../templates/' . $view . '.php';
+        require_once __DIR__ . '/../templates/' . $view . '.php';
         $content = ob_get_clean();
         
         // Inclut le layout principal
-        require_once __DIR__ . '/../../templates/layout/base.php';
+        require_once __DIR__ . '/../templates/layout/base.php';
     }
 
     protected function redirect(string $url): void

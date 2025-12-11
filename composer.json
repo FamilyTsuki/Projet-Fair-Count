@@ -7,14 +7,12 @@
 
             "": "./"
         },
-        "files": [
-            "Service/Router.php",
-            "Controller/PageController.php",
-            "Controller/AbstractController.php",
-            "Controller/DefaultController.php",
-            "Manager/AbstractManager.php",
-            "Service/Database.php"  
-        ]
+        "classmap": [
+            "Controller/",
+            "Manager/",
+            "Model/",
+            "Service/"
+            ]
     },
     "require": {
         "vlucas/phpdotenv": "^5.5"

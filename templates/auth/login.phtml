@@ -3,13 +3,13 @@
         <h2 class="mb-4">Connexion</h2>
         
         <?php 
-        // Affiche les erreurs (ex: identifiants invalides)
+        // L'erreur est passée par le contrôleur en cas d'échec
         if (isset($error) && $error): 
         ?>
             <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
         <?php endif; ?>
         
-        <form method="POST" action="index.php?route=auth/login">
+        <form method="POST" action="index.php?route=auth/login"> 
             <div class="mb-3">
                 <label for="email" class="form-label">Adresse Email</label>
                 <input type="email" class="form-control" id="email" name="email" required>

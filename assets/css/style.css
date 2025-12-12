@@ -248,3 +248,34 @@ div.register .btn {
 div.register .btn:hover {
     background-color: #003fcc;
 }
+
+
+
+
+
+.stats-table {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    border-collapse: collapse; 
+    border: 0.2px solid #1c2541;
+    background-color: transparent;
+    
+    vertical-align: top;
+}
+
+
+.stats-table th, 
+.stats-table td {
+    border-top: 0.2px solid #1c2541; 
+    padding: 12px 15px;
+    text-align: center;
+    
+}
+
+.stats-table thead tr {
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    border: none;
+}

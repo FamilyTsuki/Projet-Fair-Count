@@ -36,7 +36,7 @@ class GroupeManager extends AbstractManager
 
         foreach($results as $result)
         {
-            $Groupe = new Groupe($result["id"],$result["name"],$result["budget"]);
+            $Groupe = new Groupe($result["id"],$result["name"],$result["code"],$result["budget"]);
         
             $Groupes[] = $Groupe;
         }

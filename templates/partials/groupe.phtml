@@ -1,12 +1,27 @@
 <h1> liste de vos groupe </h1>
-<p> <?php 
+<p><?= var_dump($data["groupes"]) ?></p>
+
+<table class = "stats-table">
+<thead>
+    <tr>
+        <th>name</th>
+        <th>budget</th>
+    </tr>
+    <tr>
+</thead>
+<tbody>
+    <?php 
+
     foreach ($data["groupes"] as $groupe) {
-        ?> | name : <?php
-        echo $groupe->getName();
-        ?> | budget : <?php
-        echo $groupe->getbudget();
-        ?> </br> <?php
-    } ?> </p>
+        ?>
+        <th><?php echo $groupe->getName(); ?></th>
+       
+        <th><?php echo $groupe->getbudget();?></th>
+         <?php } ?> 
+    </tr>
+</tbody>    
+
+</table>
 <form>
     <button> Rejoindre un groupe </button>
 </form>

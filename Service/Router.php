@@ -17,6 +17,11 @@
                     $ctrl = new PageController();
                     $ctrl->ranbourccemant();
                 }
+                else if ($get["route"] === "groupe")    
+                {
+                    $ctrl = new PageController();
+                    $ctrl->groupe();
+                }
 
                 
                 else if ($get["route"] === "connect")

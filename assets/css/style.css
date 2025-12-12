@@ -52,8 +52,8 @@ nav p.name {
 }
 .img {
     position: absolute;
-    right: 0px;
-    top: 60px;
+    right: 0vw;
+    top: 100px;
     width: 45%;
     
 
@@ -61,6 +61,8 @@ nav p.name {
 .img img {
     width: 80%;
     border-radius: 500px;
+    border: #ffce97 4px solid;
+    box-shadow: #616161 4px 4px 10px;
     
 } 
 /* ================404================= */

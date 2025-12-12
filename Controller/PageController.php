@@ -21,6 +21,22 @@ class PageController extends AbstractController
             "username" => $username        // Envoi du nom d'utilisateur
         ]);
     }
+    public function groupe() : void
+    {
+        $isConnected = $this->isAuthenticated();
+        $username = null;
+
+        if ($isConnected) {
+
+        $username = $_SESSION['username'] ?? 'Utilisateur'; 
+    }
+
+        $this->render("home", [
+            "pageTitle" => "Fair groupe",
+            "isConnected" => $isConnected, // Envoi de l'état
+            "username" => $username        // Envoi du nom d'utilisateur
+        ]);
+    }
 
     // --- GESTION DES ÉQUIPES ---
     public function depance() : void

@@ -75,4 +75,21 @@ class GroupeManager extends AbstractManager
         return $query->execute($parametres); 
         // On retire l'appel à $query->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function removeFromBudjet($codegroup, $retrait) : bool {
+
+    $query = $this->db->prepare("
+        UPDATE groupe 
+        SET budget = GREATEST(budget - :retrait, 0)
+        WHERE code = :code
+    ");
+    
+    $parametres = [
+        ":code" => $codegroup,
+        ":retrait" => $retrait 
+    ];
+    
+    // 2. Exécution et retour du succès
+    return $query->execute($parametres); 
+}
 }

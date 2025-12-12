@@ -66,9 +66,13 @@
                 }
                 else if ($get["route"] === "budget/ajouter") 
                 {
-                    // C'est la nouvelle route pour soumettre le formulaire
                     $ctrl = new BudgetController(); 
-                    $ctrl->handleBudjetAddition(); // Nom de la fonction dans BudgetController
+                    $ctrl->handleBudjetAddition();
+                }
+                else if ($get["route"] === "budget/retirer")
+                {
+                    $ctrl = new BudgetController(); 
+                    $ctrl->handleBudjetRetrait();
                 }
                 else
                 {

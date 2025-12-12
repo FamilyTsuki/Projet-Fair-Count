@@ -45,4 +45,33 @@ class BudgetController
             exit;
         }
     }
+    public function handleBudjetRetrait() : void
+{
+    
+    if (isset($_POST['montant_retrait']) && isset($_POST['code_groupe'])) 
+    {
+        $retrait = filter_input(INPUT_POST, 'montant_retrait', FILTER_VALIDATE_FLOAT);
+        $codegroup = filter_input(INPUT_POST, 'code_groupe', FILTER_SANITIZE_STRING);
+        
+        if ($retrait !== false && $retrait > 0 && $codegroup) {
+            
+            $success = $this->groupeManager->removeFromBudjet($codegroup, $retrait);
+            
+            if ($success) {
+                header("Location: index.php?route=compt&code=" . $codegroup);
+                exit; 
+            } else {
+                echo "Erreur lors de la mise à jour du budget dans la base de données.";
+            }
+        } else {
+            
+            echo "Erreur : Le montant à retirer doit être un nombre positif.";
+            header("Location: index.php?route=compt&code=" . $codegroup);
+        }
+
+    } else {
+        header("Location: index.php?route=error_page");
+        exit;
+    }
+}
 }

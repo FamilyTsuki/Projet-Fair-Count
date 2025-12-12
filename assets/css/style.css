@@ -3,7 +3,7 @@
 /* ================NAV================= */
 nav {
     background: #c7c7c7;
-    background: linear-gradient(90deg,rgba(199, 199, 199, 1) 0%, rgba(215, 215, 215, 1) 60%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(90deg,rgba(199, 199, 199, 1) 0%, rgba(215, 215, 215, 1) 30%, rgba(255, 255, 255, 0) 100%);
     
     height: 60px;
     
@@ -85,16 +85,26 @@ div.login {
     background-color: #ffffff;
     box-shadow: #a3a3a3 4px 4px 10px;
     width: 40%;
-    transform: translate(-50% , 50%);
+    transform: translate(-50%);
+    margin-top: 5%;
     padding: 20px 0;
+    border-radius: 10px;
     
     
+}
+div.login h2 {
+    font-size: 3rem;
+   
 }
 div.login div.inputz {
     display: flex;
     flex-direction: column;
-    margin-top: 2%;
+    margin-top: 6%;
     gap: 1%;
+}
+div.login div.inputz label {
+    margin-bottom: 2%;
+
 }
 div.login div.inputz .form-label {
     font-size: 1.3rem;
@@ -106,11 +116,12 @@ div.login .form-control {
     
     font-size: 1.2rem;
     
-    border-radius: 5px;
+    border-radius: 10px;
+    border: #000000 1px solid;
     padding: 10px 12px;
 }
 div.login .btn {
-    margin-top: 4%;
+    margin-top: 10%;
     width: 70%;
     font-size: 1.8rem;
     background-color: #0055ff;
@@ -122,4 +133,76 @@ div.login .btn {
     transform: translate(-50%);
     position: relative;
     left: 50%;
+}
+div.login .btn:hover {
+    background-color: #003fcc;
+}
+
+
+
+
+
+
+div.register {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    left: 50%;
+    gap: 2%;
+    background-color: #ffffff;
+    box-shadow: #a3a3a3 4px 4px 10px;
+    width: 40%;
+    transform: translate(-50%);
+    margin-top: 1%;
+    padding: 20px 0;
+    border-radius: 10px;
+    
+    
+}
+div.register h2 {
+    font-size: 3rem;
+   
+}
+div.register div.inputz {
+    display: flex;
+    flex-direction: column;
+    margin-top: 6%;
+    gap: 1%;
+}
+div.register div.inputz label {
+    margin-bottom: 2%;
+
+}
+div.register div.inputz .form-label {
+    font-size: 1.3rem;
+}
+div.register form {
+    width: 90%;
+}
+div.register .form-control {
+    
+    font-size: 1.2rem;
+    
+    border-radius: 10px;
+    border: #000000 1px solid;
+    padding: 10px 12px;
+}
+div.register .btn {
+    margin-top: 10%;
+    width: 70%;
+    font-size: 1.8rem;
+    background-color: #0055ff;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    border-radius: 30px;
+    cursor: pointer;
+    transform: translate(-50%);
+    position: relative;
+    left: 50%;
+}
+div.register .btn:hover {
+    background-color: #003fcc;
 }

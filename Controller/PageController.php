@@ -7,12 +7,11 @@ class PageController extends AbstractController
 
    public function home() : void
     {
-        // 1. Récupérer l'état de la connexion (via la méthode dans AbstractController)
         $isConnected = $this->isAuthenticated();
         $username = null;
 
         if ($isConnected) {
-        // La session doit être démarrée pour que ceci fonctionne
+
         $username = $_SESSION['username'] ?? 'Utilisateur'; 
     }
 

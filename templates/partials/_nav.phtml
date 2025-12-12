@@ -5,5 +5,9 @@
         <a href="?route=depance"> dépense </a>
         <a href="?route=ranbourccemant"> remboursement  </a>
     </div>
-    <a class ="connect" href="?route=connect"> se connecter </a>
+    <?php if($data["isConnected"]) {
+            ?><p><?php echo $data["username"]; ?></p><?php
+        } else {
+            ?> <a class ="connect" href="?route=connect"> se connecter </a> <?php } ?>
+    
 </nav>

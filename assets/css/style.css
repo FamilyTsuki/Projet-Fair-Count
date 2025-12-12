@@ -30,6 +30,11 @@ nav a.connect {
     font-size: 1.8rem;
     
 }
+nav a.connect:hover {
+    background-color: #6c63ff;
+    color: white;
+    border: #5a54c6 4px solid;
+}
 nav div.lien a , nav div.lien p {
     text-decoration: none;
     color: black;

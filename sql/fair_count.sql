@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 12 déc. 2025 à 09:24
+-- Généré le : ven. 12 déc. 2025 à 13:09
 -- Version du serveur : 8.4.7
 -- Version de PHP : 8.3.28
 
@@ -92,8 +92,17 @@ CREATE TABLE IF NOT EXISTS `groupe` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `budget` int NOT NULL,
+  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `groupe`
+--
+
+INSERT INTO `groupe` (`id`, `name`, `budget`, `code`) VALUES
+(1, 'baguette', 1000, '123456'),
+(2, 'g2', 2000, 'abcdefg');
 
 -- --------------------------------------------------------
 

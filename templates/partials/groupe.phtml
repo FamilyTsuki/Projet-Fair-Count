@@ -1,9 +1,11 @@
 <h1> liste de vos groupe </h1>
 <p> <?php 
     foreach ($data["groupes"] as $groupe) {
+        ?> | name : <?php
         echo $groupe->getName();
+        ?> | budget : <?php
         echo $groupe->getbudget();
-        echo $groupe->getCode();
+        ?> </br> <?php
     } ?> </p>
 <form>
     <button> Rejoindre un groupe </button>

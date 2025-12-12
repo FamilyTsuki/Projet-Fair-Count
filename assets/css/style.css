@@ -28,7 +28,7 @@ nav a.connect {
     font-size: 1.8rem;
     
 }
-nav a , nav p {
+nav div.lien a , nav div.lien p {
     text-decoration: none;
     color: black;
     font-weight: bold;
@@ -42,7 +42,7 @@ nav div.lien a:hover {
 nav p.name {
     position: absolute;
     right: 3vw;
-    top: 0px;
+    top: 10px;
     font-size: 2rem;
     font-weight: 800;
 }
@@ -55,10 +55,13 @@ nav p.name {
     right: 0px;
     top: 60px;
     width: 45%;
+    
 
 }
 .img img {
-    width: 100%;
+    width: 80%;
+    border-radius: 500px;
+    
 } 
 /* ================404================= */
 h1.A04 {

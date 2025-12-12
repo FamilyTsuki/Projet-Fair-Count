@@ -23,9 +23,10 @@ class PageController extends AbstractController
     }
     public function groupe() : void
     {
+        $GroupeManager = new GroupeManager();
         $isConnected = $this->isAuthenticated();
         $username = null;
-
+        $groupes = $GroupeManager->getAllGroupe(); 
         if ($isConnected) {
 
         $username = $_SESSION['username'] ?? 'Utilisateur'; 
@@ -34,7 +35,8 @@ class PageController extends AbstractController
         $this->render("groupe", [
             "pageTitle" => "Fair groupe",
             "isConnected" => $isConnected, // Envoi de l'état
-            "username" => $username        // Envoi du nom d'utilisateur
+            "username" => $username,       // Envoi du nom d'utilisateur
+            "groupes" => $groupes
         ]);
     }
 

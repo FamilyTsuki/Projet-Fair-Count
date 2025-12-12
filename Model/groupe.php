@@ -4,10 +4,12 @@ class groupe {
     private $id;
     private $name;
     private $budget;
-    public function __construct($id, $name, $budget) {
+    private $code;
+    public function __construct($id, $name, $budget, $code) {
         $this->id = $id;
         $this->name = $name;
         $this->Groupe_id =$budget;
+        $this->code = $code;
     }
     public function getId() {
         return $this->id;
@@ -17,5 +19,8 @@ class groupe {
     }
     public function getBudget() {
         return $this->budget;
+    }
+    public function getCode() {
+        return $this->code;
     }
 }

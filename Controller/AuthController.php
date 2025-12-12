@@ -31,6 +31,7 @@ class AuthController extends AbstractController
                 
                 // Tente d'inscrire l'utilisateur (le Manager gère le hachage)
                 if ($manager->register($email, $password, $username)) {
+                    
                     $this->redirect('index.php?route=connect'); // Redirection vers la page de connexion
                     return;
                 } else {

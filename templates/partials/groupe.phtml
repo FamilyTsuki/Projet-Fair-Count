@@ -3,25 +3,22 @@
 <table class = "stats-table">
 <thead>
     <tr>
-        <th>name</th>
-        <th>budget</th>
+        <th>Nom</th>
+        <th>Budget</th>
     </tr>
-    
 </thead>
 <tbody>
     <?php 
-
     foreach ($data["groupes"] as $groupe) {
+        $groupId = $groupe->getId();
         ?>
-        <tr></tr>
-        <th><?php echo $groupe->getName(); ?></th>
-       
-        <th><?php echo $groupe->getbudget() . " $";?></th>
-         <?php } ?> 
-         </tr>
-    
-</tbody>    
-
+        
+        <tr>
+            <th><a href="<?php echo "index.php?route=details_groupe&id=" . $groupId;; ?>"><?php echo $groupe->getName(); ?></a></th>
+            <th><a href="<?php echo "index.php?route=details_groupe&id=" . $groupId;; ?>"><?php echo $groupe->getbudget() . " $";?></a></th>
+        </tr>
+    <?php } ?> 
+</tbody>
 </table>
 <form method="POST" action="index.php?route=ajoin_group">
     <button> Rejoindre un groupe </button>

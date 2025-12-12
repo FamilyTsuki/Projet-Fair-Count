@@ -86,7 +86,7 @@ class AuthController extends AbstractController
     /**
      * Déconnecte l'utilisateur
      */
-    public function logout(): void
+    public function unlogin(): void
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();

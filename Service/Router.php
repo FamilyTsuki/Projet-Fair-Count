@@ -39,6 +39,11 @@
                     $ctrl = new AuthController(); 
                     $ctrl->login(); 
                 }
+                else if ($get["route"] === "auth/unlogin") 
+                {
+                    $ctrl = new AuthController(); 
+                    $ctrl->unlogin(); 
+                }
                 else if ($get["route"] === "auth/register") 
                 {
                     $ctrl = new AuthController(); 

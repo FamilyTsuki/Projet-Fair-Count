@@ -112,6 +112,11 @@ class PageController extends AbstractController
         ]);
 
     }
+    public function unlogin() : void
+    {
+        $this->render("../auth/unlogin", [
+        ]);
+    }
    // --- ERREUR 404 ---
     public function notFound() : void
     {

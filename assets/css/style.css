@@ -7,6 +7,7 @@ nav {
     
     height: 60px;
     
+    
 }
 nav div{
     display: flex;
@@ -37,6 +38,13 @@ nav a , nav p {
 nav div.lien a:hover {
     color: #6c63ff;
     border-bottom: 2px solid #6c63ff;
+}
+nav p.name {
+    position: absolute;
+    right: 3vw;
+    top: 0px;
+    font-size: 2rem;
+    font-weight: 800;
 }
 /* ================HOME================= */
 #text_acueille {

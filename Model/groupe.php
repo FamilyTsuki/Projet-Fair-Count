@@ -8,7 +8,7 @@ class Groupe {
     public function __construct($id, $name, $budget, $code) {
         $this->id = $id;
         $this->name = $name;
-        $this->Groupe_id =$budget;
+        $this->budget =$budget;
         $this->code = $code;
     }
     public function getId() {

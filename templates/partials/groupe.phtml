@@ -10,12 +10,12 @@
 <tbody>
     <?php 
     foreach ($data["groupes"] as $groupe) {
-        $groupId = $groupe->getId();
+        $groupCode = $groupe->getCode();
         ?>
         
         <tr>
-            <th><a href="<?php echo "index.php?route=details_groupe&id=" . $groupId;; ?>"><?php echo $groupe->getName(); ?></a></th>
-            <th><a href="<?php echo "index.php?route=details_groupe&id=" . $groupId;; ?>"><?php echo $groupe->getbudget() . " $";?></a></th>
+            <th><a href="<?php echo "index.php?route=compt&code=" . $groupCode;; ?>"><?php echo $groupe->getName(); ?></a></th>
+            <th><a href="<?php echo "index.php?route=compt&code=" . $groupCode;; ?>"><?php echo $groupe->getbudget() . " $";?></a></th>
         </tr>
     <?php } ?> 
 </tbody>

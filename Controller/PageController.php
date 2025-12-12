@@ -117,6 +117,29 @@ class PageController extends AbstractController
             
         ]);
 
+
+    }
+    public function compt() : void
+    {
+        $isConnected = $this->isAuthenticated();
+        $username = null;
+        $groupmanager = new GroupeManager();
+
+        if ($isConnected && isset($_GET['code'])) 
+        {
+            $username = $_SESSION['username'] ?? 'Utilisateur'; 
+            $code = $_GET['code'];
+            $group = $groupmanager->getGroupBycode($code);
+            
+
+            $this->render("../partials/compt", [
+                "isConnected" => $isConnected, // Envoi de l'état
+                "username" => $username,        // Envoi du nom d'utilisateur
+                "group" => $group
+            ]);
+        } 
+        
+
     }
    // --- ERREUR 404 ---
     public function notFound() : void

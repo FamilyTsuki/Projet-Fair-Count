@@ -289,3 +289,11 @@ div.register .btn:hover {
     text-transform: uppercase;
     border: none;
 }
+
+
+h1.moulaga {
+    text-align: center;
+    margin-top: 5%;
+    font-size: 8rem;
+    font-weight: 800;
+}

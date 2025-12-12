@@ -84,6 +84,22 @@ class PageController extends AbstractController
         $this->render("../auth/unlogin", [
         ]);
     }
+    public function created_group() : void
+    {
+        $this->render("../partials/created_group", [
+            "pageTitle" => "link group",    
+            
+        ]);
+
+    }
+    public function join_group() : void
+    {
+        $this->render("../partials/join_group", [
+            "pageTitle" => "link group",    
+            
+        ]);
+
+    }
    // --- ERREUR 404 ---
     public function notFound() : void
     {

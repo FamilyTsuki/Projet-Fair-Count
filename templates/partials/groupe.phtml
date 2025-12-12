@@ -13,18 +13,15 @@
     <?php 
 
     foreach ($data["groupes"] as $groupe) {
-        ?>
-        <th><?php echo $groupe->getName(); ?></th>
-       
-        <th><?php echo $groupe->getbudget();?></th>
-         <?php } ?> 
-    </tr>
-</tbody>    
-
-</table>
-<form>
+        ?> | name : <?php
+        echo $groupe->getName();
+        ?> | budget : <?php
+        echo $groupe->getbudget();
+        ?> </br> <?php
+    } ?> </p>
+<form method="POST" action="index.php?route=ajoin_group">
     <button> Rejoindre un groupe </button>
 </form>
-<form>
+<form method="POST" action="index.php?route=created_group">
     <button> crer un groupe </button>
 </form>

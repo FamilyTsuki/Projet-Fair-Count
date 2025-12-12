@@ -17,7 +17,6 @@
                     $ctrl = new PageController();
                     $ctrl->ranbourccemant();
                 }
-
                 
                 else if ($get["route"] === "connect")
                 {

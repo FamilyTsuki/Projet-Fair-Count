@@ -1,16 +1,8 @@
 <?php
-// Fichier : Controller/AuthController.php
-
-// AUCUN NAMESPACE (Selon votre architecture globale)
-
-// Assurez-vous d'avoir bien User.php et UsersManager.php
-// Les classes doivent être chargées via le classmap de Composer.
 
 class AuthController extends AbstractController
 {
-    /**
-     * Affiche le formulaire d'inscription ou gère la soumission
-     */
+
     public function register(): void
     {
         $error = null;
@@ -43,9 +35,6 @@ class AuthController extends AbstractController
         $this->render('../auth/register', ['error' => $error]);
     }
 
-    /**
-     * Affiche le formulaire de connexion ou gère la soumission
-     */
     public function login(): void
     {
         // Démarrer la session si ce n'est pas déjà fait (souvent fait dans index.php)

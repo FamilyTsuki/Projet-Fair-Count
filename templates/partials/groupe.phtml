@@ -6,18 +6,20 @@
         <th>name</th>
         <th>budget</th>
     </tr>
-    <tr>
+    
 </thead>
 <tbody>
     <?php 
 
     foreach ($data["groupes"] as $groupe) {
         ?>
+        <tr></tr>
         <th><?php echo $groupe->getName(); ?></th>
        
-        <th><?php echo $groupe->getbudget();?></th>
+        <th><?php echo $groupe->getbudget() . " $";?></th>
          <?php } ?> 
-    </tr>
+         </tr>
+    
 </tbody>    
 
 </table>

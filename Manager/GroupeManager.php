@@ -7,6 +7,23 @@ class GroupeManager extends AbstractManager
         parent::__construct();
     
     }
+<<<<<<< HEAD
+
+    public function (string $name, string $budget, string $code){
+        $query = $this->db->prepare("
+            INSERT INTO users (name, budget, code) 
+            VALUES (:name, :budget, :code)
+        ");
+        
+        return $query->execute([
+            'name' => $name,
+            'budget' => $budget,
+            'code' => $code,
+        ]);
+    }
+
+    public function getAllGroupe($id) : array
+=======
     public function getAllGroupe($id) : array
     {
         $query = $this->db->prepare("SELECT groupe.id , groupe.name , groupe.budget, groupe.code FROM groupe

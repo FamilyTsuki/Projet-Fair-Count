@@ -99,6 +99,17 @@ class PageController extends AbstractController
    // --- ERREUR 404 ---
     public function notFound() : void
     {
-        $this->render("notFound", ["pageTitle" => "Page introuvable"]);
+        $isConnected = $this->isAuthenticated();
+        $username = null;
+
+        if ($isConnected) {
+
+        $username = $_SESSION['username'] ?? 'Utilisateur'; 
+        }
+        $this->render("notFound", [
+            "pageTitle" => "Page introuvable",
+            "isConnected" => $isConnected,
+            "username"=> $username
+        ]);
     }
 }

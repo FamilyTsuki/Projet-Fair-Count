@@ -1,6 +1,6 @@
 <?php
 
-class groupe {
+class Groupe {
     private $id;
     private $name;
     private $budget;

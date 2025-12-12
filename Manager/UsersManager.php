@@ -25,7 +25,7 @@ class UsersManager extends AbstractManager
             'username' => $username
         ]);
     }
-
+    
     
     public function login(string $email, string $plainPassword): ?User
     {

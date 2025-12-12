@@ -8,7 +8,8 @@ class Expenses {
     private $created_at;
     private $paid_by_id;
     private $category_id;
-    public function __construct($id, $title, $amount, $date, $created_at, $paid_by_id, $category_id) {
+    private $groupe_id;
+    public function __construct($id, $title, $amount, $date, $created_at, $paid_by_id, $category_id, $groupe_id) {
         $this->id = $id;
         $this->title = $title;
         $this->amount = $amount;
@@ -16,6 +17,7 @@ class Expenses {
         $this->created_at = $created_at;
         $this->paid_by_id = $paid_by_id;
         $this->Category_id = $category_id;
+        $this->groupe_id = $groupe_id;
     }
     public function getId() {
         return $this->id;
@@ -37,5 +39,8 @@ class Expenses {
     }
     public function getCategory_id() {
         return $this->category_id;
+    }
+    public function getGroupe_id() {
+        return $this->groupe_id;
     }
 }

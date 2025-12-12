@@ -1,6 +1,12 @@
 <h1> </h1>
 <form>
     <label> Nom du groupe : </label>
-    <input type="text" name="name" required>
+    <input type="text" class="form-control" id="username" name="username" required 
+                       value="<?= isset($_POST['name']) ? htmlspecialchars($_POST['name']) : '' ?>">
+    <p> </p>
+    <label> code (ce code permettra a vos ami de vous rejoindre) : </label>
+    <input type="text" class="form-control" id="username" name="username" required 
+                       value="<?= isset($_POST['code']) ? htmlspecialchars($_POST['code']) : '' ?>">
+    <p> </p>
     <button> creer </button>
 </form>

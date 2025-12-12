@@ -2,7 +2,7 @@
     <div class = "lien">
         <p> | Fair count |</p>
         <a href="./"> Acceuille </a>
-        <a href="?route=depance"> groupe </a>
+        <a href="<?php if(isset($isConnected) && $isConnected) { ?>  ?route=depance" <?php } else "?route=connect" ?>> groupe </a>
     </div>
     <?php if(isset($isConnected) && $isConnected) {
             ?><p class = "name"><?php echo $data["username"]; ?></p><?php

@@ -25,7 +25,7 @@ class GroupeManager extends AbstractManager
     {
         $query = $this->db->prepare("SELECT groupe.id , groupe.name , groupe.budget, groupe.code FROM groupe
                                             JOIN groupe_participants on groupe_participants.groupe_id = groupe.id 
-                                            JOIN users on groupe_participants.user_id = groupe.id
+                                            JOIN users on groupe_participants.user_id = users.id
                                             WHERE users.id = :id;");
         $parametres = [
             ":id" => $id

@@ -31,7 +31,7 @@ class PageController extends AbstractController
         $username = $_SESSION['username'] ?? 'Utilisateur'; 
     }
 
-        $this->render("home", [
+        $this->render("groupe", [
             "pageTitle" => "Fair groupe",
             "isConnected" => $isConnected, // Envoi de l'état
             "username" => $username        // Envoi du nom d'utilisateur

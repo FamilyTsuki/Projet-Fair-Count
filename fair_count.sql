@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 11 déc. 2025 à 13:18
+-- Généré le : ven. 12 déc. 2025 à 09:24
 -- Version du serveur : 8.4.7
 -- Version de PHP : 8.3.28
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `fair count`
+-- Base de données : `fair_count`
 --
 
 -- --------------------------------------------------------
@@ -60,19 +60,11 @@ CREATE TABLE IF NOT EXISTS `expenses` (
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `paid_by_id` int NOT NULL,
   `category_id` int NOT NULL,
+  `groupe_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_expense_payer` (`paid_by_id`),
   KEY `fk_expense_category` (`category_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `expenses`
---
-
-INSERT INTO `expenses` (`id`, `title`, `amount`, `date`, `created_at`, `paid_by_id`, `category_id`) VALUES
-(1, 'Essence Allée', 60.00, '2025-12-11', '2025-12-11 10:33:04', 1, 1),
-(2, 'Courses Supermarché', 90.00, '2025-12-11', '2025-12-11 10:33:04', 2, 3),
-(3, 'Bières Bar', 20.00, '2025-12-11', '2025-12-11 10:33:04', 3, 4);
 
 -- --------------------------------------------------------
 
@@ -84,23 +76,36 @@ DROP TABLE IF EXISTS `expense_participants`;
 CREATE TABLE IF NOT EXISTS `expense_participants` (
   `expense_id` int NOT NULL,
   `user_id` int NOT NULL,
+  `groupe_id` int NOT NULL,
   PRIMARY KEY (`expense_id`,`user_id`),
   KEY `fk_participant_user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Déchargement des données de la table `expense_participants`
+-- Structure de la table `groupe`
 --
 
-INSERT INTO `expense_participants` (`expense_id`, `user_id`) VALUES
-(1, 1),
-(2, 1),
-(1, 2),
-(2, 2),
-(3, 2),
-(1, 3),
-(2, 3),
-(3, 3);
+DROP TABLE IF EXISTS `groupe`;
+CREATE TABLE IF NOT EXISTS `groupe` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `budget` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `groupe_participants`
+--
+
+DROP TABLE IF EXISTS `groupe_participants`;
+CREATE TABLE IF NOT EXISTS `groupe_participants` (
+  `groupe_id` int NOT NULL,
+  `user_id` int NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -115,19 +120,11 @@ CREATE TABLE IF NOT EXISTS `reimbursements` (
   `date` date NOT NULL,
   `user_from_id` int NOT NULL,
   `user_to_id` int NOT NULL,
+  `groupe_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_reimb_from` (`user_from_id`),
   KEY `fk_reimb_to` (`user_to_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `reimbursements`
---
-
-INSERT INTO `reimbursements` (`id`, `amount`, `date`, `user_from_id`, `user_to_id`) VALUES
-(1, 15.50, '2025-12-10', 1, 2),
-(2, 30.00, '2025-12-11', 2, 3),
-(3, 5.75, '2025-12-11', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -144,16 +141,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `username`, `created_at`) VALUES
-(1, 'alice@gmail.com', 'password', 'Alice', '2025-12-11 10:33:04'),
-(2, 'bob@hotmail.com', '1234', 'Bob', '2025-12-11 10:33:04'),
-(3, 'charlie@gmail.com', 'abcdefg', 'Charlie', '2025-12-11 10:33:04');
+(4, 'raphaelecerf@gmail.com', '$2y$10$qC2DhSD48HheYfz2UQCNh.zBn4ZrabN7cc5SXNK7K/IUn65xUvTxW', 'raphale', '2025-12-12 09:53:09');
 
 --
 -- Contraintes pour les tables déchargées

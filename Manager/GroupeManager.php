@@ -7,11 +7,10 @@ class GroupeManager extends AbstractManager
         parent::__construct();
     
     }
-<<<<<<< HEAD
 
-    public function (string $name, string $budget, string $code){
+    public function SetGroupe(string $name, string $budget, string $code){
         $query = $this->db->prepare("
-            INSERT INTO users (name, budget, code) 
+            INSERT INTO groupe (name, budget, code) 
             VALUES (:name, :budget, :code)
         ");
         
@@ -23,9 +22,6 @@ class GroupeManager extends AbstractManager
     }
 
     public function getAllGroupe($id) : array
-=======
-    public function getAllGroupe($id) : array
->>>>>>> a34d04f5ea070436b7bf434f0e74d12a6ce7c468
     {
         $query = $this->db->prepare("SELECT groupe.id , groupe.name , groupe.budget, groupe.code FROM groupe
                                             JOIN groupe_participants on groupe_participants.groupe_id = groupe.id 

@@ -26,7 +26,7 @@ class PageController extends AbstractController
         $GroupeManager = new GroupeManager();
         $isConnected = $this->isAuthenticated();
         $username = null;
-        $groupes = $GroupeManager->getAllGroupe($_SESSION['id']); 
+        $groupes = $GroupeManager->getAllGroupe($_SESSION['user_id']); 
         if ($isConnected) {
 
         $username = $_SESSION['username'] ?? 'Utilisateur'; 

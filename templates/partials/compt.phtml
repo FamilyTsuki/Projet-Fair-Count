@@ -2,3 +2,15 @@
 
 <h1 class = "moulaga"><?= $data["group"]->getBudget() ?></h1>
 <p>salut</p>
+<?php $code_groupe = $data["group"]->getCode(); ?>
+
+<form method="POST" action="index.php?route=budget/ajouter">
+    <h2>Ajouter un montant au budget</h2>
+    
+    <label for="montant_ajout">Montant à ajouter :</label>
+    <input type="number" step="0.01" name="montant_ajout" id="montant_ajout" required>
+    
+    <input type="hidden" name="code_groupe" value="<?php echo $code_groupe; ?>">
+    
+    <button type="submit">Ajouter</button>
+</form>

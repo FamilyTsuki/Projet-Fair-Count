@@ -64,11 +64,18 @@
                     $ctrl = new PageController(); 
                     $ctrl->compt();
                 }
+                else if ($get["route"] === "budget/ajouter") 
+                {
+                    // C'est la nouvelle route pour soumettre le formulaire
+                    $ctrl = new BudgetController(); 
+                    $ctrl->handleBudjetAddition(); // Nom de la fonction dans BudgetController
+                }
                 else
                 {
                     $ctrl = new PageController();
                     $ctrl->notFound();
                 }
+                
             }
             else
             {

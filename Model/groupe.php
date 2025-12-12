@@ -23,4 +23,7 @@ class Groupe {
     public function getCode() {
         return $this->code;
     }
+    public function addBudjet($ajout) {
+        $this->budget += $ajout;
+    }
 }

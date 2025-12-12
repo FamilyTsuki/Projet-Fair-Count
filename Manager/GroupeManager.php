@@ -57,4 +57,22 @@ class GroupeManager extends AbstractManager
     
         return $Groupe;
     }
+    // ... dans la classe GroupeManager
+    public function addToBudjet($codegroup ,$ajout) : bool { // Retourne true/false
+        $query = $this->db->prepare("
+            UPDATE groupe 
+            SET budget = budget + :ajout 
+            WHERE code = :code
+        ");
+        
+        $parametres = [
+            ":code" => $codegroup,
+            // Convertir en float ici si nécessaire, ou s'assurer que l'input est propre
+            ":ajout" => $ajout 
+        ];
+        
+        // On exécute et on retourne le succès de l'opération
+        return $query->execute($parametres); 
+        // On retire l'appel à $query->fetch(PDO::FETCH_ASSOC);
+    }
 }

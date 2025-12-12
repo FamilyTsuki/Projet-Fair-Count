@@ -49,13 +49,22 @@
                     $ctrl = new AuthController(); 
                     $ctrl->register();
                 }
+                else if ($get["route"] === "created_group") 
+                {
+                    $ctrl = new PageController(); 
+                    $ctrl->created_group();
+                }
+                else if ($get["route"] === "join_group") 
+                {
+                    $ctrl = new PageController(); 
+                    $ctrl->join_group();
+                }
                 else
                 {
                     $ctrl = new PageController();
                     $ctrl->notFound();
                 }
             }
-
             else
             {
                 $ctrl = new PageController();

@@ -82,6 +82,7 @@ p.domage {
     font-weight: 800;
 }
 /* ================AUTH================= */
+/* ===========LOGIN============ */
 div.login {
     display: flex;
     position: absolute;
@@ -150,7 +151,7 @@ div.login .btn:hover {
 
 
 
-
+/* ===========REGISTER============ */
 div.register {
     display: flex;
     position: absolute;

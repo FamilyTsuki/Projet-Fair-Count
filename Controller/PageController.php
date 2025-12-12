@@ -86,16 +86,34 @@ class PageController extends AbstractController
     }
     public function created_group() : void
     {
+        $isConnected = $this->isAuthenticated();
+        $username = null;
+
+        if ($isConnected) {
+
+        $username = $_SESSION['username'] ?? 'Utilisateur'; 
+        }
         $this->render("../partials/created_group", [
             "pageTitle" => "link group",    
+            "isConnected" => $isConnected, // Envoi de l'état
+            "username" => $username        // Envoi du nom d'utilisateur
             
         ]);
 
     }
     public function join_group() : void
     {
+        $isConnected = $this->isAuthenticated();
+        $username = null;
+
+        if ($isConnected) {
+
+        $username = $_SESSION['username'] ?? 'Utilisateur'; 
+        }
         $this->render("../partials/join_group", [
             "pageTitle" => "link group",    
+            "isConnected" => $isConnected, // Envoi de l'état
+            "username" => $username        // Envoi du nom d'utilisateur
             
         ]);
 

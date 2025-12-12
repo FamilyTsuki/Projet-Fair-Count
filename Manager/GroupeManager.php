@@ -25,6 +25,7 @@ class GroupeManager extends AbstractManager
     public function getAllGroupe($id) : array
 =======
     public function getAllGroupe($id) : array
+>>>>>>> a34d04f5ea070436b7bf434f0e74d12a6ce7c468
     {
         $query = $this->db->prepare("SELECT groupe.id , groupe.name , groupe.budget, groupe.code FROM groupe
                                             JOIN groupe_participants on groupe_participants.groupe_id = groupe.id 

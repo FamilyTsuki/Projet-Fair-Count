@@ -1,14 +1,14 @@
 <?php
 
 class Groupe {
-    private $id;
-    private $name;
-    private $budget;
-    private $code;
-    public function __construct($id, $name, $budget, $code) {
+    private int $id;
+    private string $name;
+    private int $budget = 0;
+    private string $code;
+    public function __construct($id, $name, $code) {
         $this->id = $id;
         $this->name = $name;
-        $this->budget =$budget;
+        
         $this->code = $code;
     }
     public function getId() {

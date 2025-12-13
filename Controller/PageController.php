@@ -10,18 +10,22 @@ class PageController extends AbstractController
         $isConnected = $this->isAuthenticated();
         $username = null;
         $user = null;
-
+        $tune = null;
         if ($isConnected) {
 
         $username = $_SESSION['username'] ?? 'Utilisateur'; 
         $user = $_SESSION['user'];
+        $tune = $_SESSION['tune'];
+
     }
 
         $this->render("home", [
             "pageTitle" => "Fair Count",
             "isConnected" => $isConnected, // Envoi de l'état
             "username" => $username,        // Envoi du nom d'utilisateur
-            "user" => $user
+            "user" => $user,
+            "tune"=> $tune,
+
         ]);
     }
     public function groupe() : void
@@ -29,10 +33,12 @@ class PageController extends AbstractController
         $GroupeManager = new GroupeManager();
         $isConnected = $this->isAuthenticated();
         $username = null;
+        $tune = null;
         $groupes = $GroupeManager->getAllGroupe($_SESSION['user_id']); 
         if ($isConnected) {
 
         $username = $_SESSION['username'] ?? 'Utilisateur'; 
+        $tune = $_SESSION['tune'];
     }
 
         $this->render("groupe", [
@@ -40,7 +46,8 @@ class PageController extends AbstractController
             "isConnected" => $isConnected, // Envoi de l'état
             "username" => $username,       // Envoi du nom d'utilisateur
             "groupes" => $groupes,
-            "user" => $_SESSION['user']
+            "user" => $_SESSION['user'],
+            'tune' => $tune
         ]);
     }
 
@@ -92,16 +99,19 @@ class PageController extends AbstractController
     {
         $isConnected = $this->isAuthenticated();
         $username = null;
-
+        $tune = null;
         if ($isConnected) {
 
         $username = $_SESSION['username'] ?? 'Utilisateur'; 
+        $tune = $_SESSION['tune'];
         }
         $this->render("../partials/created_group", [
             "pageTitle" => "link group",    
             "isConnected" => $isConnected, // Envoi de l'état
             "username" => $username,        // Envoi du nom d'utilisateur
-            "user" => $_SESSION['user']
+            "user" => $_SESSION['user'],
+            'tune' => $tune
+            
         ]);
 
     }
@@ -109,16 +119,19 @@ class PageController extends AbstractController
     {
         $isConnected = $this->isAuthenticated();
         $username = null;
+        $tune = null;
 
         if ($isConnected) {
 
         $username = $_SESSION['username'] ?? 'Utilisateur'; 
+        $tune = $_SESSION['tune'];
         }
         $this->render("../partials/join_group", [
             "pageTitle" => "link group",    
             "isConnected" => $isConnected, // Envoi de l'état
             "username" => $username,        // Envoi du nom d'utilisateur
-            "user" => $_SESSION['user']
+            "user" => $_SESSION['user'],
+            'tune' => $tune
             
         ]);
 
@@ -129,10 +142,12 @@ class PageController extends AbstractController
         $isConnected = $this->isAuthenticated();
         $username = null;
         $groupmanager = new GroupeManager();
+        $tune = null;
 
         if ($isConnected && isset($_GET['code'])) 
         {
             $username = $_SESSION['username'] ?? 'Utilisateur'; 
+            $tune = $_SESSION['tune'];
             $code = $_GET['code'];
             $group = $groupmanager->getGroupBycode($code);
             
@@ -141,7 +156,8 @@ class PageController extends AbstractController
                 "isConnected" => $isConnected, // Envoi de l'état
                 "username" => $username,        // Envoi du nom d'utilisateur
                 "group" => $group,
-                "user" => $_SESSION['user']
+                "user" => $_SESSION['user'],
+                'tune' => $tune
             ]);
         } 
         
@@ -152,16 +168,18 @@ class PageController extends AbstractController
     {
         $isConnected = $this->isAuthenticated();
         $username = null;
-
+        $tune = null;
         if ($isConnected) {
 
         $username = $_SESSION['username'] ?? 'Utilisateur'; 
+        $tune = $_SESSION['tune'];
         }
         $this->render("notFound", [
             "pageTitle" => "Page introuvable",
             "isConnected" => $isConnected,
             "username"=> $username,
-            "user" => $_SESSION['user']
+            "user" => $_SESSION['user'],
+            'tune' => $tune
         ]);
     }
 }

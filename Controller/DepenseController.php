@@ -57,6 +57,7 @@ class DepenseController extends AbstractController
     $groupeId = $group->getId();
     $currentUserId = $_SESSION['user_id'] ?? 0; 
     
+    
     $categories = $this->expenseManager->getAllCategories();
     
     $membres = $this->groupManager->getGroupParticipants($groupeId); 
@@ -65,6 +66,7 @@ class DepenseController extends AbstractController
         $username = null;
     $username = $_SESSION['username'] ?? 'Utilisateur'; 
     
+    
     $data = [
         'groupe_id' => $groupeId,
         'current_user_id' => $currentUserId,
@@ -72,6 +74,7 @@ class DepenseController extends AbstractController
         'membres' => $membres,
         "isConnected" => $isConnected, // Envoi de l'état
         "username" => $username,       // Envoi du nom d'utilisateur
+        'tune' => $_SESSION['tune'],
         
     ];
     
@@ -110,6 +113,7 @@ public function showExpenseList(string $codeGroupe): void
         'code_groupe' => $codeGroupe,
         "isConnected" => $isConnected, // Envoi de l'état
             "username" => $username,       // Envoi du nom d'utilisateur
+            'tune' => $_SESSION['tune']
 
     ];
     

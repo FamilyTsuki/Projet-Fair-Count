@@ -22,11 +22,12 @@ class BudgetController
             $codegroup = filter_input(INPUT_POST, 'code_groupe', FILTER_SANITIZE_STRING);
             
             if ($ajout !== false && $ajout > 0 && $codegroup) {
-                
+                $usermanager = new UsersManager();
+
                 $success = $this->groupeManager->addToBudjet($codegroup, $ajout);
                 
                 if ($success) {
-
+                    $usermanager->addTuneById($_SESSION["user_id"],-$ajout);
                     header("Location: index.php?route=compt&code=" . $codegroup);
                     exit; 
                 } else {
@@ -54,10 +55,11 @@ class BudgetController
         $codegroup = filter_input(INPUT_POST, 'code_groupe', FILTER_SANITIZE_STRING);
         
         if ($retrait !== false && $retrait > 0 && $codegroup) {
-            
+            $usermanager = new UsersManager();
             $success = $this->groupeManager->removeFromBudjet($codegroup, $retrait);
             
             if ($success) {
+                $usermanager->addTuneById($_SESSION["user_id"],$retrait);
                 header("Location: index.php?route=compt&code=" . $codegroup);
                 exit; 
             } else {

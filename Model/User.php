@@ -34,7 +34,7 @@ class User {
         return $this->tune;
     }
     public function addTune($tune) {
-        $this->tune += $tune;
+        $this->tune = $this->tune + $tune;
     }
 
     

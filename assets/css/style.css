@@ -1,106 +1,202 @@
 *{margin: 0; padding: 0;}
 
-/* ================NAV================= */
-nav {
-    background: #c7c7c7;
-    background: linear-gradient(90deg,rgba(199, 199, 199, 1) 0%, rgba(215, 215, 215, 1) 30%, rgba(255, 255, 255, 0) 100%);
-    
-    height: 60px;
-    
-    
-}
-nav div{
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    width: 60%;
-    gap:15%;
-}
-nav a.connect {
-    background-color: #c1c0e4;
-    text-decoration: none;
-    color: black;
-    padding: 4px 16px;
-    position: absolute;
-    margin-right: 5vw;
-    right: 0px;
-    top:5px;
-    border-radius: 30px;
-    border: #7673a4 4px solid;
-    font-size: 1.8rem;
-    
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
 }
 
-nav a.connect:hover {
-    background-color: #6c63ff;
-    color: white;
-    border: #5a54c6 4px solid;
+/* ================NAV================= */
+nav.main-nav {
+    background: #c7c7c7;
+    background: linear-gradient(90deg, rgba(199, 199, 199, 1) 0%, rgba(215, 215, 215, 1) 40%, #ffffff 100%);
+    
+    height: 60px;
+    padding: 0 20px;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-nav div.lien a , nav div.lien p {
+
+.nav-brand-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-brand {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #333;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-link {
     text-decoration: none;
-    color: black;
+    color: #333;
     font-weight: bold;
-    font-size: 1.3rem;
-    padding: 15px 0;
+    font-size: 1.1rem;
+    padding: 20px 0;
+    transition: color 0.3s, border-bottom 0.3s;
 }
-nav div.lien a:hover {
+
+.nav-link:hover {
     color: #6c63ff;
     border-bottom: 2px solid #6c63ff;
 }
-nav p.name {
-    position: absolute;
-    right: 3vw;
-    top: 10px;
-    font-size: 2rem;
+
+.nav-user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
     font-weight: 800;
 }
-nav p.tune {
-    position: absolute;
-    right: 12vw;
-    top: 13px;
-    font-size: 1.8rem;
-    font-weight: 800;
-    
+
+.user-tune-display {
+    color: #28a745;
+    font-size: 1.3rem;
+    margin: 0;
 }
-nav div.conn form {
-    position: absolute;
-    right: 2vw;
-    top: 70px;
+
+.user-name-display {
+    font-size: 1.1rem;
+    color: #007bff;
+    margin: 0;
 }
-nav div.conn form button {
+
+.logout-form {
+    margin: 0;
+}
+
+.logout-btn {
     background-color: #b0acff;
-    color: rgb(0, 0, 0);
+    color: #333;
     border: none;
-    padding: 5px 10px;
+    padding: 8px 12px;
     border-radius: 30px;
-    font-size: 1.2rem;
-
-
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
 }
-nav div.conn form button:hover {
+
+.logout-btn:hover {
     background-color: #5a54c6;
     color: white;
-    
 }
-/* ================HOME================= */
-#text_acueille {
-    margin-top: 10%;
-}
-.img {
-    position: absolute;
-    right: 0vw;
-    top: 100px;
-    width: 45%;
-    
 
+.nav-connect-btn {
+    background-color: #c1c0e4;
+    text-decoration: none;
+    color: black;
+    padding: 8px 16px;
+    border-radius: 30px;
+    border: #7673a4 2px solid;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
-.img img {
-    width: 80%;
-    border-radius: 500px;
-    border: #ffce97 4px solid;
-    box-shadow: #616161 4px 4px 10px;
-    
-} 
+
+.nav-connect-btn:hover {
+    background-color: #6c63ff;
+    color: white;
+    border-color: #5a54c6;
+}
+
+/* ================HOME================= */
+/* --- Styles Généraux et Mise en Page (Accueil) --- */
+.accueil-container {
+    display: flex; /* Active Flexbox */
+    align-items: center; /* Alignement vertical au centre */
+    justify-content: space-between; /* Espace entre le texte et l'image */
+    max-width: 1200px;
+    margin: 20px auto; /* Centre le conteneur principal */
+    padding: 0 20px;
+    min-height: 60vh; /* Assure que le conteneur est assez grand */
+}
+
+/* --- Section Contenu (Texte) --- */
+.hero-content {
+    flex: 1; /* Prend l'espace disponible */
+    max-width: 50%;
+    padding-right: 40px;
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    color: #007bff; /* Couleur principale */
+    margin-bottom: 0.1em;
+}
+
+#lead {
+    font-size: 1.25em;
+    color: #555;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+/* Section Slogan */
+.slogan-section {
+    margin-top: 30px;
+    border-left: 5px solid #ffce97; /* Bordure colorée pour l'accentuation */
+    padding-left: 15px;
+    margin-bottom: 30px;
+}
+
+.slogan-section h2 {
+    font-size: 1.5em;
+    color: #333;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+
+.slogan-section p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin: 5px 0;
+}
+
+/* --- Bouton d'Appel à l'Action (CTA) --- */
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #28a745; /* Vert accrocheur */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* --- Section Image --- */
+.hero-image {
+    flex: 1; /* Prend l'espace disponible */
+    display: flex;
+    justify-content: flex-end; /* Alignement à droite */
+    max-width: 50%;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 450px; /* Limite la taille maximale de l'image */
+    height: auto;
+    /* Styles de forme et d'ombre conservés et améliorés */
+    border-radius: 50%; /* Utilisation de 50% pour un cercle parfait */
+    border: #ffce97 5px solid;
+    box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.2);
+    object-fit: cover; /* Assure que l'image couvre bien le cercle */
+}
+
 /* ================404================= */
 h1.A04 {
     font-size: 10rem;
@@ -298,10 +394,320 @@ div.register .btn:hover {
     border: none;
 }
 
-
+/* ================compt================= */
 h1.moulaga {
     text-align: center;
-    margin-top: 5%;
+    margin-top: 1%;
     font-size: 8rem;
     font-weight: 800;
+}
+
+
+section.compte div.add{
+    background-color: aqua;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    width: 30vw;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 25%;
+}
+section.compte div.add form, section.compte div.sub form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    place-items: center;
+
+}
+section.compte div.add button, section.compte div.sub button{
+    font-size: 1.2rem;
+    background-color: #0048ff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 10vw;
+    
+}
+section.compte div.add button:hover, section.compte div.sub button:hover{
+    background-color: #0031cc;
+}
+
+section.compte div.add input{
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: #000000 1px solid;
+    padding: 5px 10px;
+}
+section.compte div.sub{
+    background-color: rgb(255, 183, 0);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    width: 30vw;
+    position: absolute;
+    transform: translateX(50%);
+    right: 25%;
+}
+section.compte div.sub input{
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: #000000 1px solid;
+    padding: 5px 10px;
+}
+section.compte a {
+    padding: 8 18px;
+    background-color: #40ff50;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    font-size: 1.5rem;
+    transform: translateX(-50%);
+    text-decoration: none;
+}
+section.compte a:hover {
+    background-color: #00cc1a;
+    color: white;
+}
+section.compte a.ajou{
+    position: absolute;
+    top: 500px;
+    left: 25%;
+    transform: translateX(-50%);
+
+}
+section.compte a.voir{
+    position: absolute;
+    top: 500px;
+    right: 25%;
+    transform: translateX(50%);
+
+}
+
+
+
+
+
+
+
+section.cree_exp h1 {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8em;
+}
+
+section.cree_exp form {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+section.cree_exp fieldset {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background-color: #fafafa;
+}
+
+section.cree_exp legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #555;
+    padding: 0 10px;
+    margin-left: -5px;
+}
+
+section.cree_exp label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #444;
+}
+
+section.cree_exp input[type="text"],
+section.cree_exp input[type="number"],
+section.cree_exp input[type="date"],
+section.cree_exp select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+section.cree_exp input[type="text"]:focus,
+section.cree_exp input[type="number"]:focus,
+section.cree_exp input[type="date"]:focus,
+section.cree_exp select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+section.cree_exp #amount {
+    font-weight: bold;
+    color: #28a745;
+}
+
+section.cree_exp .participant-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+section.cree_exp .participant-checkbox input[type="checkbox"] {
+    /* Style de la case à cocher elle-même */
+    width: auto;
+    margin-right: 10px;
+    /* Ajuster la taille pour une meilleure visibilité */
+    transform: scale(1.2); 
+}
+
+section.cree_exp .participant-checkbox label {
+    /* Style de l'étiquette à côté de la case */
+    display: inline;
+    margin: 0;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+section.cree_exp button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 30px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+section.cree_exp button[type="submit"]:hover {
+    background-color: #218838;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+
+
+
+
+
+
+
+section.list_ex h1 {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2em;
+}
+
+section.list_ex .expense-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px; 
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+section.list_ex .button {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    display: inline-block;
+}
+
+section.list_ex .button.primary {
+    background-color: #28a745;
+    color: white;
+    border: 2px solid #28a745;
+}
+
+section.list_ex .button.primary:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+}
+
+section.list_ex .button.secondary {
+    background-color: #ffffff;
+    color: #007bff;
+    border: 2px solid #007bff;
+}
+
+section.list_ex .button.secondary:hover {
+    background-color: #e9f5ff;
+    color: #0056b3;
+}
+
+section.list_ex .empty-state {
+    text-align: center;
+    padding: 40px;
+    background-color: #fff;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 40px auto;
+    color: #6c757d;
+}
+
+section.list_ex .expenses-table {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+section.list_ex .expenses-table thead {
+    background-color: #007bff;
+    color: white;
+}
+
+section.list_ex .expenses-table th,
+section.list_ex .expenses-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+section.list_ex .expenses-table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+section.list_ex .expenses-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+section.list_ex .expenses-table td.amount {
+    font-weight: bold;
+    color: #dc3545;
+    text-align: right;
+    white-space: nowrap;
+}
+
+section.list_ex .expenses-table td:nth-child(6) {
+    font-size: 0.9em;
+    color: #6c757d;
 }

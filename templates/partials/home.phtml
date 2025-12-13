@@ -1,13 +1,21 @@
-<div>
-    <h1>Bienvenue sur Fair Count</h1>
-    <p id="lead">Gérez vos comptes entre amis facilement.</p>
-</div>
-<div id="text_acueille">
-    <p> POUR DES VACANCE SANS TRACKA </p>
-    <p> grace a fair count pas finit les souci financier entre amis</p>
-    <p> chacun sait se qu'il dépense et se qu'il doit au autre </p>
-</div>
-<div class ="img">
-    
-    <img src="assets/image/image_gens_qui_s'amuse.jpg" >
-</div>
+<main class="accueil-container">
+    <div class="hero-content">
+        <h1>Bienvenue sur Fair Count</h1>
+        <p id="lead">Gérez et équilibrez vos comptes entre amis facilement et sans stress.</p>
+
+        <div class="slogan-section">
+            <h2>VACANCES SANS TRACAS, AMITIÉS SANS SOUCIS.</h2>
+            <p>Grâce à Fair Count, mettez fin aux complications financières entre amis.</p>
+            <p>Chacun sait exactement ce qu'il a dépensé et ce qu'il doit aux autres.</p>
+        </div>
+        <?php if(!isset($isConnected) && !$isConnected){ ?>
+            <a href="?route=connect" class="cta-button">
+                Commencez maintenant, c'est gratuit !
+            </a>
+        <?php } ?>
+    </div>
+
+    <div class="hero-image">
+        <img src="assets/image/image_gens_qui_s'amuse.jpg" alt="Un groupe d'amis souriants partageant un moment de joie">
+    </div>
+</main>

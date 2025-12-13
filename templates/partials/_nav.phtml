@@ -1,22 +1,25 @@
-<nav>
-    <div class = "lien">
-        <p> | Fair count |</p>
-        <a href="./"> Acceuille </a>
-        <a href="<?php if(isset($isConnected) && $isConnected) {
-                             ?>  ?route=groupe <?php } 
-                        else {
-                            ?> ?route=connect <?php }?>"> groupe </a>
+<?php
+$groupe_link = (isset($isConnected) && $isConnected) ? '?route=groupe' : '?route=connect';
+$solde = isset($_SESSION['tune']) ? htmlspecialchars($_SESSION['tune']) . " $" : '0 $';
+?>
+
+<nav class="main-nav">
+    <div class="nav-brand-links">
+        <p class="nav-brand">Fair Count</p>
+        <a href="./" class="nav-link">Accueil</a>
+        <a href="<?php echo $groupe_link; ?>" class="nav-link">Groupes</a>
     </div>
-    <?php if(isset($isConnected) && $isConnected) {
-            ?><div class = "conn"><p class = "name"><?php echo $data["username"]; ?></p>
-            <form method="POST" action="index.php?route=auth/unlogin">    
-            <button type="submit" class="btn">Se deconnecter</button>
+
+    <?php if(isset($isConnected) && $isConnected){ ?>
+        <div class="nav-user-info">
+            <p class="user-tune-display"><?php echo $solde; ?></p>
+            <p class="user-name-display"><?php echo htmlspecialchars($data["username"]); ?></p>
             
-    </form></div>
-    <p class = "tune"><?php echo $_SESSION["tune"] . " $" ?></p><?php
-
-        } else {
-            ?> <a class ="connect" href="?route=connect"> se connecter </a> <?php } ?>
-    
+            <form method="POST" action="index.php?route=auth/unlogin" class="logout-form">
+                <button type="submit" class="btn logout-btn">Déconnexion</button>
+            </form>
+        </div>
+    <?php }else{ ?>
+        <a class="nav-connect-btn" href="?route=connect">Se connecter</a>
+    <?php } ?>
 </nav>
-

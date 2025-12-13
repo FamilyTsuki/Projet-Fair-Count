@@ -16,9 +16,11 @@ class DepenseController extends AbstractController
         if (
             isset($_POST['title'], $_POST['amount'], $_POST['date'], 
                   $_POST['category_id'], $_POST['groupe_id'], 
-                  $_POST['participants'])
+                  $_POST['participants'],$_POST["category_id"])
         ) {
-            
+            $CategoryManager = new CategoryManager();
+    
+    
             $expense = new Expenses(
                 null, // ID sera généré par la BDD
                 htmlspecialchars($_POST['title']),
@@ -27,7 +29,9 @@ class DepenseController extends AbstractController
                 null,
                 intval($_POST['paid_by_id']),
                 intval($_POST['category_id']),
-                intval($_POST['groupe_id'])
+                intval($_POST['groupe_id']),
+                $CategoryManager->getCategoryById(intval($_POST['category_id']))
+                
             );
             
             $participantIds = is_array($_POST['participants']) ? array_map('intval', $_POST['participants']) : [];

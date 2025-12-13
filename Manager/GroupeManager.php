@@ -52,7 +52,7 @@ class GroupeManager extends AbstractManager
         }
         return $Groupes;
     }
-    public function getGroupBycode($code) : Groupe
+    public function getGroupBycode($code) : ?Groupe
     {
         $query = $this->db->prepare("SELECT groupe.id , groupe.name , groupe.budget, groupe.code FROM groupe
                                             WHERE groupe.code = :code;");

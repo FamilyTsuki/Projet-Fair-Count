@@ -13,7 +13,7 @@
             <button type="submit" class="btn">Se deconnecter</button>
             
     </form></div>
-    <p class = "tune"><?php echo $data["user"]->getTune() . " $" ?></p><?php
+    <p class = "tune"><?php echo $_SESSION["tune"] . " $" ?></p><?php
 
         } else {
             ?> <a class ="connect" href="?route=connect"> se connecter </a> <?php } ?>

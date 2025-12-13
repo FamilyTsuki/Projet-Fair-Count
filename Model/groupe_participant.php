@@ -11,6 +11,6 @@ class groupe_participant {
         return $this->user_id;
     }
     public function getGroupe_id() {
-        return $this->groupe_id;
+        return $this->Groupe_id;
     }
 }

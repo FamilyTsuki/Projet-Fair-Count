@@ -28,6 +28,8 @@ class BudgetController
                 
                 if ($success) {
                     $usermanager->addTuneById($_SESSION["user_id"],-$ajout);
+                    $_SESSION['tune'] = $_SESSION['tune'] + (-$ajout);
+                    
                     header("Location: index.php?route=compt&code=" . $codegroup);
                     exit; 
                 } else {
@@ -60,6 +62,7 @@ class BudgetController
             
             if ($success) {
                 $usermanager->addTuneById($_SESSION["user_id"],$retrait);
+                $_SESSION['tune'] = $_SESSION['tune'] + ($retrait);
                 header("Location: index.php?route=compt&code=" . $codegroup);
                 exit; 
             } else {

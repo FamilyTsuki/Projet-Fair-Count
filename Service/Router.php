@@ -94,7 +94,7 @@
                     $ctrl = new DepenseController(); 
                     $ctrl->handleExpenseCreation();
                 }
-                else if ($get["route"] === "depense/liste") // <-- La nouvelle route pour l'affichage
+                else if ($get["route"] === "depense/liste")
                 {
                     $ctrl = new DepenseController(); 
                     $codeGroupe = $_GET['code_groupe'] ?? '';
@@ -105,13 +105,14 @@
                         (new PageController())->notFound(); 
                     }
                 }
-                else if ($get["route"] === "remboursement") 
+                
+                else if ($get["route"] === "remboursement/afficher") 
                 {
-                    $ctrl = new PageController(); 
-                    $codeGroupe = $_GET['code_groupe'] ?? '';
+                    $ctrl = new RemboursementController(); 
+                    $codeGroupe = $_GET['code'] ?? ''; 
                     
                     if (!empty($codeGroupe)) {
-                        $ctrl->reimbursement($codeGroupe); 
+                        $ctrl->showRemboursement($codeGroupe);
                     } else {
                         (new PageController())->notFound(); 
                     }

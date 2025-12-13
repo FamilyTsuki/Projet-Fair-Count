@@ -50,11 +50,26 @@ class PageController extends AbstractController
             'tune' => $tune
         ]);
     }
-    public function reimbursement() {
-        $this->render("depance", [
-            
-            "pageTitle" => "Les depance",
-            
+    public function remboursement($codeGroupe) {
+
+          $GroupeManager = new GroupeManager();
+        $isConnected = $this->isAuthenticated();
+        $username = null;
+        $tune = null;
+        $groupes = $GroupeManager->getAllGroupe($_SESSION['user_id']); 
+        if ($isConnected) {
+
+        $username = $_SESSION['username'] ?? 'Utilisateur'; 
+        $tune = $_SESSION['tune'];
+    }
+
+        $this->render("remboursement", [
+            "pageTitle" => "Fair groupe",
+            "isConnected" => $isConnected, // Envoi de l'état
+            "username" => $username,       // Envoi du nom d'utilisateur
+            "groupes" => $groupes,
+            "user" => $_SESSION['user'],
+            'tune' => $tune
         ]);
     }
     // --- GESTION DES ÉQUIPES ---

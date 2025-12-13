@@ -1,0 +1,45 @@
+<section class = "reboursemant">
+<h1>Remboursements et Solde du Groupe : <?php echo htmlspecialchars($groupe->getName()); ?></h1>
+
+<div class="balance-summary">
+    <h2>Résumé des Comptes</h2>
+    
+    <?php if (empty($balances)): ?>
+        <p class="empty-state">Aucun solde à afficher. Le groupe est peut-être vide ou aucune dépense n'a été enregistrée.</p>
+    <?php else: ?>
+        
+        <ul class="balance-list">
+            <?php foreach ($balances as $userId => $balance): ?>
+                <?php $isPositive = $balance > 0; ?>
+                
+                <li class="<?php echo $isPositive ? 'credit' : 'debit'; ?>">
+                    <span class="member-name"><?php echo htmlspecialchars($memberNames[$userId] ?? 'Inconnu'); ?></span> : 
+                    
+                    <?php if (abs($balance) < 0.01): ?>
+                        <span class="neutral">Est à jour.</span>
+                    <?php elseif ($isPositive): ?>
+                        <span class="amount-credit">Doit recevoir <?php echo number_format($balance, 2, ',', ' '); ?> €</span>
+                    <?php else: ?>
+                        <span class="amount-debit">Doit payer <?php echo number_format(abs($balance), 2, ',', ' '); ?> €</span>
+                    <?php endif; ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+        
+    <?php endif; ?>
+</div>
+
+<div class="action-buttons">
+    <a href="index.php?route=depense/creer&code=<?php echo htmlspecialchars($code_groupe); ?>" class="button primary">
+        + Ajouter une dépense
+    </a>
+    <a href="index.php?route=groupe&code=<?php echo htmlspecialchars($code_groupe); ?>" class="button secondary">
+        Retour au Groupe
+    </a>
+</div>
+
+<div class="reimbursement-form-container">
+    <h3>Enregistrer un Paiement (Remboursement)</h3>
+    <p>Cette section permet d'indiquer qu'un utilisateur a remboursé une dette à un autre.</p>
+    </div>
+</section>

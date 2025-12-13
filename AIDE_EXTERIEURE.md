@@ -3,4 +3,4 @@
 
 
 alban : 
-bocoup d aide ia pour le debu du projet (gemini) et des recherche rapide pour revoir du css
+bocoup d aide ia pour le debu du projet et quand j'etais bloquer (gemini) et des recherche rapide pour revoir du css

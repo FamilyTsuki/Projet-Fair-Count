@@ -9,10 +9,9 @@ class ExpenseManager extends AbstractManager
 
     public function createExpense(Expenses $expense, array $participantIds): bool
 {
-    $this->db->beginTransaction(); // Ajout d'une transaction pour la sécurité
+    $this->db->beginTransaction();
 
     
-        // 1. INSERTION DE LA DÉPENSE PRINCIPALE
         $query = $this->db->prepare("
             INSERT INTO expenses (title, amount, date, paid_by_id, category_id, groupe_id) 
             VALUES (:title, :amount, :date, :paid_by_id, :category_id, :groupe_id)
@@ -27,14 +26,12 @@ class ExpenseManager extends AbstractManager
             'groupe_id' => $expense->getGroupeId(),
         ]);
         
-        // 2. RÉCUPÉRATION DE L'ID (CRITIQUE)
         $expenseId = $this->db->lastInsertId();
         
         if (!$expenseId) {
              throw new \PDOException("Impossible de récupérer l'ID de la dépense.", 999);
         }
 
-        // 3. INSERTION DES PARTICIPANTS (CORRIGÉE)
         $insertParticipantsQuery = "
             INSERT INTO expense_participants (expense_id, user_id, groupe_id) 
             VALUES (:expense_id, :user_id, :groupe_id)
@@ -43,7 +40,7 @@ class ExpenseManager extends AbstractManager
         
         foreach ($participantIds as $userId) {
             $participantStatement->execute([
-                'expense_id' => $expenseId, // <-- AJOUT DE L'ID DE LA DÉPENSE
+                'expense_id' => $expenseId, 
                 'user_id' => $userId,
                 'groupe_id' => $expense->getGroupeId()
             ]);
@@ -67,7 +64,6 @@ class ExpenseManager extends AbstractManager
     }
     public function getExpensesByGroup(int $groupeId): array
 {
-    // Requête principale pour les dépenses et les informations liées (payeur, catégorie)
     $query = $this->db->prepare("
         
         SELECT 
@@ -89,12 +85,10 @@ class ExpenseManager extends AbstractManager
     $query->execute([':groupe_id' => $groupeId]);
     $expenses = $query->fetchAll(PDO::FETCH_ASSOC);
 
-    // Si aucune dépense n'est trouvée
     if (empty($expenses)) {
         return [];
     }
 
-    // Pour chaque dépense, récupérer la liste des participants
     $expenseIds = array_column($expenses, 'id');
     $placeholders = implode(',', array_fill(0, count($expenseIds), '?'));
     
@@ -110,13 +104,11 @@ class ExpenseManager extends AbstractManager
     $participantsQuery->execute($expenseIds);
     $allParticipants = $participantsQuery->fetchAll(PDO::FETCH_ASSOC);
     
-    // Organiser les participants par dépense ID
     $participantsByExpense = [];
     foreach ($allParticipants as $participant) {
         $participantsByExpense[$participant['expense_id']][] = $participant['username'];
     }
 
-    // Fusionner les données
     foreach ($expenses as $key => $expense) {
         $expenses[$key]['participants'] = $participantsByExpense[$expense['id']] ?? [];
     }

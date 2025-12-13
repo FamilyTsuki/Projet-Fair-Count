@@ -702,8 +702,8 @@ section.list_ex .expenses-table tbody tr:nth-child(even) {
 }
 section.list_ex .expenses-table td.amount {
     font-weight: bold;
-    color: #dc3545;
-    text-align: right;
+    color: #35dc54;
+    text-align: left;
     white-space: nowrap;
 }
 

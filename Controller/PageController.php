@@ -50,7 +50,13 @@ class PageController extends AbstractController
             'tune' => $tune
         ]);
     }
-
+    public function reimbursement() {
+        $this->render("depance", [
+            
+            "pageTitle" => "Les depance",
+            
+        ]);
+    }
     // --- GESTION DES ÉQUIPES ---
     public function depance() : void
     {
@@ -61,7 +67,6 @@ class PageController extends AbstractController
             "pageTitle" => "Les depance",
             
         ]);
-        
     }
 
     // --- GESTION DES JOUEURS ---

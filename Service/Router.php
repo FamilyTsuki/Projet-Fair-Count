@@ -105,6 +105,17 @@
                         (new PageController())->notFound(); 
                     }
                 }
+                else if ($get["route"] === "remboursement") 
+                {
+                    $ctrl = new PageController(); 
+                    $codeGroupe = $_GET['code_groupe'] ?? '';
+                    
+                    if (!empty($codeGroupe)) {
+                        $ctrl->reimbursement($codeGroupe); 
+                    } else {
+                        (new PageController())->notFound(); 
+                    }
+                }
                 else
                 {
                     $ctrl = new PageController();

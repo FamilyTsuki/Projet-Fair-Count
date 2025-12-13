@@ -487,9 +487,7 @@ section.compte a.voir{
 
 
 
-
-
-
+/* ================CREE_EXPENCE================= */
 
 section.cree_exp h1 {
     color: #007bff;
@@ -566,15 +564,12 @@ section.cree_exp .participant-checkbox {
 }
 
 section.cree_exp .participant-checkbox input[type="checkbox"] {
-    /* Style de la case à cocher elle-même */
     width: auto;
     margin-right: 10px;
-    /* Ajuster la taille pour une meilleure visibilité */
     transform: scale(1.2); 
 }
 
 section.cree_exp .participant-checkbox label {
-    /* Style de l'étiquette à côté de la case */
     display: inline;
     margin: 0;
     font-weight: normal;
@@ -601,14 +596,7 @@ section.cree_exp button[type="submit"]:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-
-
-
-
-
-
-
-
+/* ================LIST_EXPENSES================= */
 
 
 section.list_ex h1 {
@@ -714,16 +702,7 @@ section.list_ex .expenses-table td:nth-child(6) {
 
 
 
-
-
-
-
-
-
-
-
-
-
+/* ================REBOURSEMANT================= */
 
 section.reboursemant h1 {
     color: #007bff;

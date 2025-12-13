@@ -10,10 +10,8 @@ class UsersManager extends AbstractManager
     
     public function register(string $email, string $password, string $username): bool
     {
-        // 1. Hachage du mot de passe
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         
-        // 2. Insertion
         $query = $this->db->prepare("
             INSERT INTO users (email, password, username) 
             VALUES (:email, :password, :username)
@@ -29,15 +27,12 @@ class UsersManager extends AbstractManager
     
     public function login(string $email, string $plainPassword): ?User
     {
-        // 1. Récupération des données utilisateur par email
         $query = $this->db->prepare("SELECT * FROM users WHERE email = :email");
         $query->execute(['email' => $email]);
         $result = $query->fetch(PDO::FETCH_ASSOC);
 
-        // 2. Vérification de l'existence et du mot de passe
         if ($result && password_verify($plainPassword, $result['password'])) {
             
-            // 3. Succès : Création et retour de l'objet User
             return new User(
                 $result["id"], 
                 $result["email"], 
@@ -49,7 +44,6 @@ class UsersManager extends AbstractManager
             );
         }
 
-        // Échec
         return null;
     }
     public function getUserById(int $id) : User

@@ -1,15 +1,11 @@
 <?php
 
-// Assurez-vous d'inclure votre GroupeManager ici
-// require_once 'models/GroupeManager.php'; 
-
 class BudgetController 
 {
     private GroupeManager $groupeManager; 
 
     public function __construct()
     {
-        // Le contrôleur a besoin du Manager pour parler à la base de données
         $this->groupeManager = new GroupeManager(); 
     }
 

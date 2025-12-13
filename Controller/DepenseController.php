@@ -52,73 +52,69 @@ class DepenseController extends AbstractController
         }
     }
     public function showCreateExpenseForm(int $groupCode): void
-{
-    $group = $this->groupManager->getGroupBycode($groupCode);
-    $groupeId = $group->getId();
-    $currentUserId = $_SESSION['user_id'] ?? 0; 
-    
-    
-    $categories = $this->expenseManager->getAllCategories();
-    
-    $membres = $this->groupManager->getGroupParticipants($groupeId); 
-
-     $isConnected = $this->isAuthenticated();
-        $username = null;
-    $username = $_SESSION['username'] ?? 'Utilisateur'; 
-    
-    
-    $data = [
-        'groupe_id' => $groupeId,
-        'current_user_id' => $currentUserId,
-        'categories' => $categories,
-        'membres' => $membres,
-        "isConnected" => $isConnected, // Envoi de l'état
-        "username" => $username,       // Envoi du nom d'utilisateur
-        'tune' => $_SESSION['tune'],
+    {
+        $group = $this->groupManager->getGroupBycode($groupCode);
+        $groupeId = $group->getId();
+        $currentUserId = $_SESSION['user_id'] ?? 0; 
         
-    ];
-    
-    (new PageController())->render('create_expense', $data);
-    
-}
-public function showExpenseList(string $codeGroupe): void
-{
-    $groupeManager = new GroupeManager();
-    $expenseManager = new ExpenseManager();
-    
-    // 1. Récupérer l'ID du groupe à partir du code
-    $group = $groupeManager->getGroupBycode($codeGroupe);
-    
-    if ($group === null) {
-        (new PageController())->notFound();
-        return;
-    }
-    
-    $groupeId = $group->getId();
-    
-    // 2. Récupérer la liste des dépenses
-    $expenses = $expenseManager->getExpensesByGroup($groupeId);
-    
-    // 3. Préparer les données
-    $isConnected = $this->isAuthenticated();
-        $username = null;
+        
+        $categories = $this->expenseManager->getAllCategories();
+        
+        $membres = $this->groupManager->getGroupParticipants($groupeId); 
 
-        if ($isConnected) {
-
+        $isConnected = $this->isAuthenticated();
+            $username = null;
         $username = $_SESSION['username'] ?? 'Utilisateur'; 
-    }
-    $data = [
-        'groupe' => $group, // Pour le titre et les informations du groupe
-        'expenses' => $expenses, // La liste des dépenses
-        'code_groupe' => $codeGroupe,
-        "isConnected" => $isConnected, // Envoi de l'état
+        
+        
+        $data = [
+            'groupe_id' => $groupeId,
+            'current_user_id' => $currentUserId,
+            'categories' => $categories,
+            'membres' => $membres,
+            "isConnected" => $isConnected, // Envoi de l'état
             "username" => $username,       // Envoi du nom d'utilisateur
-            'tune' => $_SESSION['tune']
+            'tune' => $_SESSION['tune'],
+            
+        ];
+        
+        (new PageController())->render('create_expense', $data);
+        
+    }
+    public function showExpenseList(string $codeGroupe): void
+    {
+        $groupeManager = new GroupeManager();
+        $expenseManager = new ExpenseManager();
+        
+        $group = $groupeManager->getGroupBycode($codeGroupe);
+        
+        if ($group === null) {
+            (new PageController())->notFound();
+            return;
+        }
+        
+        $groupeId = $group->getId();
+        
+        $expenses = $expenseManager->getExpensesByGroup($groupeId);
+        
+        $isConnected = $this->isAuthenticated();
+            $username = null;
 
-    ];
-    
-    // 4. Rendre la vue
-    (new PageController())->render('list_expenses', $data);
-}
+            if ($isConnected) {
+
+            $username = $_SESSION['username'] ?? 'Utilisateur'; 
+        }
+        $data = [
+            'groupe' => $group,
+            'expenses' => $expenses,
+            'code_groupe' => $codeGroupe,
+            "isConnected" => $isConnected,
+                "username" => $username,
+                'tune' => $_SESSION['tune']
+
+        ];
+        
+        (new PageController())->render('list_expenses', $data);
+    }
 }
 ?>

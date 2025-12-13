@@ -1,8 +1,8 @@
 <h2>Rejoindre un groupe existant</h2>
 
-<?php if (isset($error) && $error):?>
+<?php if (isset($error) && $error){?>
     <p style="color: red;"><?= htmlspecialchars($error) ?></p>
-<?php endif?>
+<?php }?>
 
 <form method="POST" action="index.php?route=join_groupv"> 
     

@@ -21,10 +21,9 @@ class AuthController extends AbstractController
                 
                 $manager = new UsersManager();
                 
-                // Tente d'inscrire l'utilisateur (le Manager gère le hachage)
                 if ($manager->register($email, $password, $username)) {
                     
-                    $this->redirect('index.php?route=connect'); // Redirection vers la page de connexion
+                    $this->redirect('index.php?route=connect');
                     return;
                 } else {
                     $error = "Cet email est déjà utilisé ou une erreur est survenue.";
@@ -37,7 +36,6 @@ class AuthController extends AbstractController
 
     public function login(): void
     {
-        // Démarrer la session si ce n'est pas déjà fait (souvent fait dans index.php)
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
@@ -51,17 +49,15 @@ class AuthController extends AbstractController
             if ($email && $password) {
                 $manager = new UsersManager();
                 
-                // Tente de connecter l'utilisateur (le Manager gère la vérification du hash)
                 $user = $manager->login($email, $password);
                 
                 if ($user) {
-                    // Connexion réussie : Stocker les informations minimales en session
                     $_SESSION['user_id'] = $user->getId();
                     $_SESSION['username'] = $user->getUsername();
                     $_SESSION['user'] = $user;
                     $_SESSION['tune'] = $user->getTune();
                     
-                    $this->redirect('index.php'); // Redirection vers l'accueil
+                    $this->redirect('index.php');
                     return;
                 } else {
                     $error = "Identifiants invalides.";
@@ -74,9 +70,6 @@ class AuthController extends AbstractController
         $this->render('../auth/login', ['error' => $error]);
     }
 
-    /**
-     * Déconnecte l'utilisateur
-     */
     public function unlogin(): void
     {
         if (session_status() === PHP_SESSION_NONE) {

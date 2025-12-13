@@ -15,16 +15,13 @@ class GroupeManager extends AbstractManager
             VALUES (:name, :budget, :code)
         ");
         
-        // On initialise le budget à '0' lors de la création si vous voulez
-        // mais le code actuel utilise la valeur passée ($budget)
         $success = $query->execute([
             'name' => $name,
-            'budget' => $budget, // Vous pourriez vouloir initialiser le budget à '0' ici
+            'budget' => $budget,
             'code' => $code,
         ]);
 
         if ($success) {
-            // !!! Ligne clé : Récupère l'ID inséré
             return $this->db->lastInsertId();
         }
         

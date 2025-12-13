@@ -1,24 +1,24 @@
 <h1> liste de vos groupe </h1>
 
 <table class = "stats-table">
-<thead>
-    <tr>
-        <th>Nom</th>
-        <th>Budget</th>
-    </tr>
-</thead>
-<tbody>
-    <?php 
-    foreach ($data["groupes"] as $groupe) {
-        $groupCode = $groupe->getCode();
-        ?>
-        
+    <thead>
         <tr>
-            <th><a href="<?php echo "index.php?route=compt&code=" . $groupCode; ?>"><?php echo $groupe->getName(); ?></a></th>
-            <th><a href="<?php echo "index.php?route=compt&code=" . $groupCode; ?>"><?php echo $groupe->getbudget() . " $";?></a></th>
+            <th>Nom</th>
+            <th>Budget</th>
         </tr>
-    <?php } ?> 
-</tbody>
+    </thead>
+    <tbody>
+        <?php 
+        foreach ($data["groupes"] as $groupe) {
+            $groupCode = $groupe->getCode();
+            ?>
+            
+            <tr>
+                <th><a href="<?php echo "index.php?route=compt&code=" . $groupCode; ?>"><?php echo $groupe->getName(); ?></a></th>
+                <th><a href="<?php echo "index.php?route=compt&code=" . $groupCode; ?>"><?php echo $groupe->getbudget() . " $";?></a></th>
+            </tr>
+        <?php } ?> 
+    </tbody>
 </table>
 <form method="POST" action="index.php?route=join_group">
     <button> Rejoindre un groupe </button>

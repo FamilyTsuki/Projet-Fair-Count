@@ -3,7 +3,6 @@ class GroupeController extends AbstractController
 {
     public function create(): void
     {
-        // On suppose que l'utilisateur doit être connecté pour créer un groupe
         if (!isset($_SESSION['user_id'])) {
             $this->redirect('index.php?route=connect'); 
             return;
@@ -15,32 +14,21 @@ class GroupeController extends AbstractController
             $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
             $code = filter_input(INPUT_POST, 'code', FILTER_SANITIZE_STRING);
             
-            // On peut ajouter une validation pour le nom et le code ici
             if (!$name || !$code || strlen($code) < 4) {
                  $error = "Le nom et le code doivent être valides (code min 4 caractères).";
             } else {
-                // 1. Instanciation des Managers
                 $groupeManager = new GroupeManager();
                 $participantManager = new Groupe_participantManager();
                 
-                // Le budget par défaut est 0 lors de la création
                 $initialBudget = '0';
-                
-                // 2. Créer le groupe et récupérer son nouvel ID
                 $newGroupeId = $groupeManager->setGroupe($name, $initialBudget, $code);
                 
                 if ($newGroupeId) {
                     $userId = (string)$_SESSION['user_id'];
-                    
-                    // 3. Lier l'utilisateur créateur au groupe
                     if ($participantManager->linkUserToGroup($userId, $newGroupeId)) {
-                        
-                        // Succès : Redirection vers la page du nouveau groupe (par exemple)
                         $this->redirect('index.php?route=groupe&id=' . $newGroupeId);
                         return;
                     } else {
-                        // Optionnel : Supprimer le groupe créé si la liaison échoue
-                        // (Non implémenté ici pour la simplicité)
                         $error = "Le groupe a été créé mais la liaison avec l'utilisateur a échoué.";
                     }
                 } else {
@@ -49,7 +37,53 @@ class GroupeController extends AbstractController
             }
         }
         
-        // Afficher le formulaire de création avec l'erreur si elle existe
         $this->render('../groupe/create', ['error' => $error]);
     }
+    public function join(): void {
+
+    if (!isset($_SESSION['user_id'])) {
+        $this->redirect('index.php?route=connect'); 
+        return;
+    }
+
+    $error = null;
+    $success = null;
+    $userId = (string)$_SESSION['user_id'];
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $name = filter_input(INPUT_POST, 'name', FILTER_DEFAULT);
+        $code = filter_input(INPUT_POST, 'code', FILTER_DEFAULT); 
+        
+        if (!$name || !$code) {
+             $error = "Veuillez entrer le nom du groupe et le code.";
+        } else {
+            $groupeManager = new GroupeManager();
+            $participantManager = new Groupe_participantManager();
+            
+            $group = $groupeManager->joingroupe($name, $code);
+            
+            if ($group) {
+                $groupeId = $group->getId();
+                
+                if ($participantManager->isUserAlreadyInGroup($userId, $groupeId)) {
+                    $error = "Vous êtes déjà membre de ce groupe.";
+                } else {
+                    if ($participantManager->linkUserToGroup($userId, $groupeId)) {
+                        $this->redirect('index.php?route=compt&code=' . $code);
+                        return;
+                    } else {
+                        $error = "Erreur lors de l'ajout au groupe. Veuillez réessayer.";
+                    }
+                }
+            } else {
+                $error = "Aucun groupe trouvé avec ce nom et ce code.";
+            }
+        }
+    }
+    
+    $this->render("../partials/join_group", [
+        'error' => $error,
+        'success' => $success 
+    ]);
+}
 }

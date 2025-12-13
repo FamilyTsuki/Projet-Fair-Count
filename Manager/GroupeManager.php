@@ -124,5 +124,25 @@ class GroupeManager extends AbstractManager
         
         return $participants;
     }
+    public function joingroupe(string $name, string $code): Groupe|false
+{
+    $query = $this->db->prepare("
+        SELECT id, name, budget, code FROM groupe
+        WHERE name = :name AND code = :code
+    ");
+    
+    $query->execute([
+        ":name" => $name,
+        ":code" => $code
+    ]);
+    
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        return new Groupe($result["id"], $result["name"], $result["code"], $result["budget"]);
+    }
+    
+    return false;
+}
 }
 ?>

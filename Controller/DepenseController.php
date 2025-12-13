@@ -74,5 +74,33 @@ class DepenseController extends AbstractController
     (new PageController())->render('create_expense', $data);
     
 }
+public function showExpenseList(string $codeGroupe): void
+{
+    $groupeManager = new GroupeManager();
+    $expenseManager = new ExpenseManager();
+    
+    // 1. Récupérer l'ID du groupe à partir du code
+    $group = $groupeManager->getGroupBycode($codeGroupe);
+    
+    if ($group === null) {
+        (new PageController())->notFound();
+        return;
+    }
+    
+    $groupeId = $group->getId();
+    
+    // 2. Récupérer la liste des dépenses
+    $expenses = $expenseManager->getExpensesByGroup($groupeId);
+    
+    // 3. Préparer les données
+    $data = [
+        'groupe' => $group, // Pour le titre et les informations du groupe
+        'expenses' => $expenses, // La liste des dépenses
+        'code_groupe' => $codeGroupe
+    ];
+    
+    // 4. Rendre la vue
+    (new PageController())->render('list_expenses', $data);
+}
 }
 ?>

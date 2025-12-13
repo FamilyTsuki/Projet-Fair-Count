@@ -89,6 +89,17 @@
                     $ctrl = new DepenseController(); 
                     $ctrl->handleExpenseCreation();
                 }
+                else if ($get["route"] === "depense/liste") // <-- La nouvelle route pour l'affichage
+                {
+                    $ctrl = new DepenseController(); 
+                    $codeGroupe = $_GET['code_groupe'] ?? '';
+                    
+                    if (!empty($codeGroupe)) {
+                        $ctrl->showExpenseList($codeGroupe); 
+                    } else {
+                        (new PageController())->notFound(); 
+                    }
+                }
                 else
                 {
                     $ctrl = new PageController();

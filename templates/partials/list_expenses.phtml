@@ -1,0 +1,55 @@
+    <?php
+// Variables disponibles grâce à extract($data) : 
+// $groupe, $expenses, $code_groupe
+?>
+
+<h1>Dépenses du Groupe : <?php echo htmlspecialchars($groupe->getName()); ?></h1>
+
+<div class="expense-actions">
+    <a href="index.php?route=depense/creer&code=<?php echo htmlspecialchars($code_groupe); ?>" class="button primary">
+        + Ajouter une nouvelle dépense
+    </a>
+    <a href="index.php?route=groupe&code=<?php echo htmlspecialchars($code_groupe); ?>" class="button secondary">
+        Retour au Groupe
+    </a>
+</div>
+
+<?php if (empty($expenses)): ?>
+    <p class="empty-state">Aucune dépense enregistrée pour ce groupe pour le moment.</p>
+<?php else: ?>
+
+    <table class="expenses-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Motif</th>
+                <th>Montant</th>
+                <th>Payé par</th>
+                <th>Catégorie</th>
+                <th>Participants</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($expenses as $expense): ?>
+                <tr>
+                    <td><?php echo date('d/m/Y', strtotime($expense['date'])); ?></td>
+                    <td><?php echo htmlspecialchars($expense['title']); ?></td>
+                    <td class="amount"><?php echo number_format($expense['amount'], 2, ',', ' '); ?> €</td>
+                    <td><?php echo htmlspecialchars($expense['paid_by_name']); ?></td>
+                    <td><?php echo htmlspecialchars($expense['category_name']); ?></td>
+                    <td>
+                        <?php 
+                        // Afficher la liste des participants séparés par une virgule
+                        echo htmlspecialchars(implode(', ', $expense['participants'])); 
+                        ?>
+                    </td>
+                    <td>
+                        <a href="index.php?route=depense/details&id=<?php echo $expense['id']; ?>">Détails</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+<?php endif; ?>

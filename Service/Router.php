@@ -56,7 +56,6 @@
                 }
                 else if ($get["route"] === "created_groupv") 
                 {
-                    // On appelle le nouveau contrôleur qui gère le GET (affichage) et le POST (traitement)
                     $ctrl = new GroupeController(); 
                     $ctrl->create(); 
                 }

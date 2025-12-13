@@ -64,6 +64,11 @@
                     $ctrl = new PageController(); 
                     $ctrl->join_group();
                 }
+                else if ($get["route"] === "join_groupv") 
+                {
+                    $ctrl = new GroupeController();
+                    $ctrl->join();
+                }
                 else if ($get["route"] === "compt") 
                 {
                     $ctrl = new PageController(); 

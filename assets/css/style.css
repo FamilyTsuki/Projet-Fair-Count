@@ -54,6 +54,14 @@ nav p.name {
     font-size: 2rem;
     font-weight: 800;
 }
+nav p.tune {
+    position: absolute;
+    right: 12vw;
+    top: 13px;
+    font-size: 1.8rem;
+    font-weight: 800;
+    
+}
 nav div.conn form {
     position: absolute;
     right: 2vw;

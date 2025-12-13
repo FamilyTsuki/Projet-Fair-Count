@@ -11,7 +11,10 @@
             ?><div class = "conn"><p class = "name"><?php echo $data["username"]; ?></p>
             <form method="POST" action="index.php?route=auth/unlogin">    
             <button type="submit" class="btn">Se deconnecter</button>
-    </form></div><?php
+            
+    </form></div>
+    <p class = "tune"><?php echo $data["user"]->getTune() . " $" ?></p><?php
+
         } else {
             ?> <a class ="connect" href="?route=connect"> se connecter </a> <?php } ?>
     

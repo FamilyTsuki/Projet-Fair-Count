@@ -9,16 +9,19 @@ class PageController extends AbstractController
     {
         $isConnected = $this->isAuthenticated();
         $username = null;
+        $user = null;
 
         if ($isConnected) {
 
         $username = $_SESSION['username'] ?? 'Utilisateur'; 
+        $user = $_SESSION['user'];
     }
 
         $this->render("home", [
             "pageTitle" => "Fair Count",
             "isConnected" => $isConnected, // Envoi de l'état
-            "username" => $username        // Envoi du nom d'utilisateur
+            "username" => $username,        // Envoi du nom d'utilisateur
+            "user" => $user
         ]);
     }
     public function groupe() : void
@@ -36,7 +39,8 @@ class PageController extends AbstractController
             "pageTitle" => "Fair groupe",
             "isConnected" => $isConnected, // Envoi de l'état
             "username" => $username,       // Envoi du nom d'utilisateur
-            "groupes" => $groupes
+            "groupes" => $groupes,
+            "user" => $_SESSION['user']
         ]);
     }
 
@@ -96,8 +100,8 @@ class PageController extends AbstractController
         $this->render("../partials/created_group", [
             "pageTitle" => "link group",    
             "isConnected" => $isConnected, // Envoi de l'état
-            "username" => $username        // Envoi du nom d'utilisateur
-            
+            "username" => $username,        // Envoi du nom d'utilisateur
+            "user" => $_SESSION['user']
         ]);
 
     }
@@ -113,7 +117,8 @@ class PageController extends AbstractController
         $this->render("../partials/join_group", [
             "pageTitle" => "link group",    
             "isConnected" => $isConnected, // Envoi de l'état
-            "username" => $username        // Envoi du nom d'utilisateur
+            "username" => $username,        // Envoi du nom d'utilisateur
+            "user" => $_SESSION['user']
             
         ]);
 
@@ -135,7 +140,8 @@ class PageController extends AbstractController
             $this->render("../partials/compt", [
                 "isConnected" => $isConnected, // Envoi de l'état
                 "username" => $username,        // Envoi du nom d'utilisateur
-                "group" => $group
+                "group" => $group,
+                "user" => $_SESSION['user']
             ]);
         } 
         
@@ -154,7 +160,8 @@ class PageController extends AbstractController
         $this->render("notFound", [
             "pageTitle" => "Page introuvable",
             "isConnected" => $isConnected,
-            "username"=> $username
+            "username"=> $username,
+            "user" => $_SESSION['user']
         ]);
     }
 }

@@ -58,6 +58,7 @@ class AuthController extends AbstractController
                     // Connexion réussie : Stocker les informations minimales en session
                     $_SESSION['user_id'] = $user->getId();
                     $_SESSION['username'] = $user->getUsername();
+                    $_SESSION['user'] = $user;
                     
                     $this->redirect('index.php'); // Redirection vers l'accueil
                     return;

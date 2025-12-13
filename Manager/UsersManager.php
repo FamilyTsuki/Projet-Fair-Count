@@ -43,7 +43,9 @@ class UsersManager extends AbstractManager
                 $result["email"], 
                 $result["password"], 
                 $result["username"], 
-                $result["created_at"]
+                $result["created_at"],
+                $result["tune"]
+
             );
         }
 
@@ -52,19 +54,19 @@ class UsersManager extends AbstractManager
     }
     public function getUserById(int $id) : User
     {
-        $query = $this->db->prepare('SELECT id , email, password ,username,created_at FROM users 
+        $query = $this->db->prepare('SELECT id , email, password ,username,created_at , tune FROM users 
                                             WHERE id = :id ;' );
         $parameters = [
             'id' => $id
         ];
         $query->execute($parameters);
         $result = $query->fetch(PDO::FETCH_ASSOC);
-        $User = new User($result["id"],$result["email"],$result["password"],$result["username"], $result["created_at"]);
+        $User = new User($result["id"],$result["email"],$result["password"],$result["username"], $result["created_at"],$result["tune"]);
         return $User;
     }
     public function getAllUsers() : array
     {
-        $query = $this->db->prepare("SELECT id , email, password ,username,created_at FROM users");
+        $query = $this->db->prepare("SELECT id , email, password ,username,created_at ,tune FROM users");
         $parameters = [
 
         ];
@@ -74,11 +76,23 @@ class UsersManager extends AbstractManager
 
         foreach($results as $result)
         {
-            $User = new User($result["id"],$result["email"],$result["password"],$result["username"], $result["created_at"]);
+            $User = new User($result["id"],$result["email"],$result["password"],$result["username"], $result["created_at"],$result["tune"]);
         
             $Users[] = $User;
         }
         return $Users;
+    }
+    public function addTuneById(int $id , int $tune) {
+        $query = $this->db->prepare("
+            UPDATE users 
+            SET tune = :tune 
+            WHERE id = :id
+        ");
+
+        return $query->execute([
+            'tune' => $tune,
+            'id' => $id
+        ]);
     }
 
 

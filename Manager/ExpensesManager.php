@@ -65,11 +65,13 @@ class ExpenseManager extends AbstractManager
             e.title, 
             e.amount, 
             e.date, 
-            u.username AS paid_by_name
+            u.username AS paid_by_name,
+            c.type
             
         FROM expenses e
         JOIN expense_participants ep ON e.id = expense_id
         JOIN users u ON ep.user_id = u.id
+        JOIN categories c on c.id = e.category_id
         WHERE e.groupe_id = :groupe_id
         ORDER BY e.date DESC, e.id DESC
     ");

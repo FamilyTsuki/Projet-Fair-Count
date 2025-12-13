@@ -97,10 +97,20 @@ public function showExpenseList(string $codeGroupe): void
     $expenses = $expenseManager->getExpensesByGroup($groupeId);
     
     // 3. Préparer les données
+    $isConnected = $this->isAuthenticated();
+        $username = null;
+
+        if ($isConnected) {
+
+        $username = $_SESSION['username'] ?? 'Utilisateur'; 
+    }
     $data = [
         'groupe' => $group, // Pour le titre et les informations du groupe
         'expenses' => $expenses, // La liste des dépenses
-        'code_groupe' => $codeGroupe
+        'code_groupe' => $codeGroupe,
+        "isConnected" => $isConnected, // Envoi de l'état
+            "username" => $username,       // Envoi du nom d'utilisateur
+
     ];
     
     // 4. Rendre la vue

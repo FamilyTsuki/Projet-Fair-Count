@@ -27,7 +27,7 @@
                 <th>Payé par</th>
                 <th>Catégorie</th>
                 <th>Participants</th>
-                <th>Actions</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -37,16 +37,14 @@
                     <td><?php echo htmlspecialchars($expense['title']); ?></td>
                     <td class="amount"><?php echo number_format($expense['amount'], 2, ',', ' '); ?> €</td>
                     <td><?php echo htmlspecialchars($expense['paid_by_name']); ?></td>
-                    <td><?php echo htmlspecialchars($expense["category_name"]); ?></td>
+                    <td><?php echo htmlspecialchars($expense["type"]); ?></td>
                     <td>
                         <?php 
                         // Afficher la liste des participants séparés par une virgule
                         echo htmlspecialchars(implode(', ', $expense['participants'])); 
                         ?>
                     </td>
-                    <td>
-                        <a href="index.php?route=depense/details&id=<?php echo $expense['id']; ?>">Détails</a>
-                    </td>
+                    
                 </tr>
             <?php endforeach; ?>
         </tbody>

@@ -8,17 +8,27 @@ class GroupeManager extends AbstractManager
     
     }
 
-    public function SetGroupe(string $name, string $budget, string $code){
+    public function setGroupe(string $name, string $budget, string $code): string|false
+    {
         $query = $this->db->prepare("
             INSERT INTO groupe (name, budget, code) 
             VALUES (:name, :budget, :code)
         ");
         
-        return $query->execute([
+        // On initialise le budget à '0' lors de la création si vous voulez
+        // mais le code actuel utilise la valeur passée ($budget)
+        $success = $query->execute([
             'name' => $name,
-            'budget' => $budget,
+            'budget' => $budget, // Vous pourriez vouloir initialiser le budget à '0' ici
             'code' => $code,
         ]);
+
+        if ($success) {
+            // !!! Ligne clé : Récupère l'ID inséré
+            return $this->db->lastInsertId();
+        }
+        
+        return false;
     }
 
     public function getAllGroupe($id) : array

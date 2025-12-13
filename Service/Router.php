@@ -54,6 +54,12 @@
                     $ctrl = new PageController(); 
                     $ctrl->created_group();
                 }
+                else if ($get["route"] === "created_groupv") 
+                {
+                    // On appelle le nouveau contrôleur qui gère le GET (affichage) et le POST (traitement)
+                    $ctrl = new GroupeController(); 
+                    $ctrl->create(); 
+                }
                 else if ($get["route"] === "join_group") 
                 {
                     $ctrl = new PageController(); 

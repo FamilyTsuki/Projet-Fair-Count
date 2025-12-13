@@ -8,13 +8,17 @@ class ExpenseManager extends AbstractManager
     }
 
     public function createExpense(Expenses $expense, array $participantIds): bool
-    {
+{
+    $this->db->beginTransaction(); // Ajout d'une transaction pour la sécurité
+
+    
+        // 1. INSERTION DE LA DÉPENSE PRINCIPALE
         $query = $this->db->prepare("
             INSERT INTO expenses (title, amount, date, paid_by_id, category_id, groupe_id) 
             VALUES (:title, :amount, :date, :paid_by_id, :category_id, :groupe_id)
         ");
         
-        $success = $query->execute([
+        $query->execute([
             'title' => $expense->getTitle(),
             'amount' => $expense->getAmount(),
             'date' => $expense->getDate(),
@@ -23,25 +27,31 @@ class ExpenseManager extends AbstractManager
             'groupe_id' => $expense->getGroupeId(),
         ]);
         
-        if (!$success) {
-            return false;
+        // 2. RÉCUPÉRATION DE L'ID (CRITIQUE)
+        $expenseId = $this->db->lastInsertId();
+        
+        if (!$expenseId) {
+             throw new \PDOException("Impossible de récupérer l'ID de la dépense.", 999);
         }
 
+        // 3. INSERTION DES PARTICIPANTS (CORRIGÉE)
         $insertParticipantsQuery = "
-            INSERT INTO expense_participants ( user_id, groupe_id) 
-            VALUES ( :user_id, :groupe_id)
+            INSERT INTO expense_participants (expense_id, user_id, groupe_id) 
+            VALUES (:expense_id, :user_id, :groupe_id)
         ";
         $participantStatement = $this->db->prepare($insertParticipantsQuery);
         
         foreach ($participantIds as $userId) {
             $participantStatement->execute([
-                
+                'expense_id' => $expenseId, // <-- AJOUT DE L'ID DE LA DÉPENSE
                 'user_id' => $userId,
                 'groupe_id' => $expense->getGroupeId()
             ]);
         }
-
+        
+        $this->db->commit();
         return true;
+
     }
     
     public function getAllCategories(): array

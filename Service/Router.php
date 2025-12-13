@@ -74,6 +74,16 @@
                     $ctrl = new BudgetController(); 
                     $ctrl->handleBudjetRetrait();
                 }
+                else if ($get["route"] === "depense/creer") 
+                {
+                    $ctrl = new DepenseController(); 
+                    $ctrl->showCreateExpenseForm(intval($_GET['code'])); 
+                }
+                else if ($get["route"] === "depense/enregistrer") 
+                {
+                    $ctrl = new DepenseController(); 
+                    $ctrl->handleExpenseCreation();
+                }
                 else
                 {
                     $ctrl = new PageController();

@@ -51,14 +51,15 @@ class GroupeManager extends AbstractManager
         ];
         $query->execute($parametres);
         $result = $query->fetch(PDO::FETCH_ASSOC);
-               
+        if ($result === false) {
+            return null;
+        }
         $Groupe = new Groupe($result["id"],$result["name"],$result["code"],$result["budget"]);
     
     
         return $Groupe;
     }
-    // ... dans la classe GroupeManager
-    public function addToBudjet($codegroup ,$ajout) : bool { // Retourne true/false
+    public function addToBudjet($codegroup ,$ajout) : bool {
         $query = $this->db->prepare("
             UPDATE groupe 
             SET budget = budget + :ajout 
@@ -67,13 +68,10 @@ class GroupeManager extends AbstractManager
         
         $parametres = [
             ":code" => $codegroup,
-            // Convertir en float ici si nécessaire, ou s'assurer que l'input est propre
             ":ajout" => $ajout 
         ];
         
-        // On exécute et on retourne le succès de l'opération
         return $query->execute($parametres); 
-        // On retire l'appel à $query->fetch(PDO::FETCH_ASSOC);
     }
 
     public function removeFromBudjet($codegroup, $retrait) : bool {
@@ -88,8 +86,33 @@ class GroupeManager extends AbstractManager
         ":code" => $codegroup,
         ":retrait" => $retrait 
     ];
-    
-    // 2. Exécution et retour du succès
     return $query->execute($parametres); 
 }
+    public function getGroupParticipants(int $groupeId): array
+    {
+        $query = $this->db->prepare("
+            SELECT u.id, u.username, u.email , u.password , u.created_at
+            FROM users u
+            JOIN groupe_participants gp ON u.id = gp.user_id 
+            WHERE gp.groupe_id = :groupe_id
+        ");
+        
+        $parametres = [
+            ":groupe_id" => $groupeId
+        ];
+        
+        $query->execute($parametres);
+        $results = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        $participants = [];
+
+        foreach($results as $result)
+        {
+            $user = new User($result["id"], $result["email"], $result["password"] , $result["username"] , $result["created_at"]); 
+            $participants[] = $user;
+        }
+        
+        return $participants;
+    }
 }
+?>

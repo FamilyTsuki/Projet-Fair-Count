@@ -34,13 +34,13 @@ class Expenses {
     public function getCreatedAt() {
         return $this->created_at;
     }
-    public function getPaid_by_id() {
+    public function getPaidById() {
         return $this->paid_by_id;
     }
-    public function getCategory_id() {
+    public function getCategoryId() {
         return $this->category_id;
     }
-    public function getGroupe_id() {
+    public function getGroupeId() {
         return $this->groupe_id;
     }
 }

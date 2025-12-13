@@ -8,8 +8,9 @@
                             ?> ?route=connect <?php }?>"> groupe </a>
     </div>
     <?php if(isset($isConnected) && $isConnected) {
-            ?><div class = "conn"><p class = "name"><?php echo $data["username"]; ?></p><form method="POST" action="index.php?route=auth/unlogin">    
-        <button type="submit" class="btn">Se deconnecter</button>
+            ?><div class = "conn"><p class = "name"><?php echo $data["username"]; ?></p>
+            <form method="POST" action="index.php?route=auth/unlogin">    
+            <button type="submit" class="btn">Se deconnecter</button>
     </form></div><?php
         } else {
             ?> <a class ="connect" href="?route=connect"> se connecter </a> <?php } ?>

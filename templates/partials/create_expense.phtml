@@ -1,0 +1,66 @@
+<?php 
+?>
+
+<h1>Créer une nouvelle dépense</h1>
+
+<form method="POST" action="index.php?route=depense/enregistrer">
+
+    <input type="hidden" name="groupe_id" value="<?php echo htmlspecialchars($data['groupe_id']); ?>">
+
+    <fieldset>
+        <legend>Informations de la Dépense</legend>
+
+        <label for="title">Motif / Titre :</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="amount">Montant :</label>
+        <input type="number" step="0.01" id="amount" name="amount" min="0.01" required>
+
+        <label for="date">Date de la dépense :</label>
+        <input type="date" id="date" name="date" value="<?php echo date('Y-m-d'); ?>" required>
+
+        <label for="category_id">Catégorie :</label>
+        <select id="category_id" name="category_id" required>
+            <?php foreach ($data['categories'] as $category): ?>
+                <option value="<?php echo $category->getId(); ?>">
+                    <?php echo htmlspecialchars($category->getType()); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </fieldset>
+        
+<fieldset>
+    <legend>Qui a payé ?</legend>
+    <label for="paid_by_id">Le montant a été avancé par :</label>
+    <select id="paid_by_id" name="paid_by_id" required>
+        <?php 
+        foreach ($data['membres'] as $member): ?>
+            <?php 
+            $selected = ($member->getId() == $data['current_user_id']) ? 'selected' : ''; 
+            ?>
+            <option value="<?php echo $member->getId(); ?>" <?php echo $selected; ?>>
+                <?php echo htmlspecialchars($member->getUsername()); ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+</fieldset>
+    <fieldset>
+        <legend>Qui est concerné par cette dépense ?</legend>
+        <p>Cochez les membres qui doivent partager cette dépense :</p>
+        
+        <?php foreach ($data['membres'] as $member): ?>
+            <div class="participant-checkbox">
+                <input 
+                    type="checkbox" 
+                    id="participant_<?php echo $member->getId(); ?>" 
+                    name="participants[]" 
+                    value="<?php echo $member->getId(); ?>"
+                    checked> <label for="participant_<?php echo $member->getId(); ?>">
+                    <?php echo htmlspecialchars($member->getUsername()); ?>
+                </label>
+            </div>
+        <?php endforeach; ?>
+    </fieldset>
+
+    <button type="submit">Enregistrer la Dépense</button>
+</form>

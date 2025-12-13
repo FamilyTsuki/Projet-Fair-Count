@@ -105,6 +105,11 @@
                         (new PageController())->notFound(); 
                     }
                 }
+                else if ($get["route"] === "remboursement") 
+                {
+                    $ctrl = new ReimbursementController(); 
+                    $ctrl->reimbursement();
+                }
                 else
                 {
                     $ctrl = new PageController();

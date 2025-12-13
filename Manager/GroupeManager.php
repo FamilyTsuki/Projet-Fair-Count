@@ -55,7 +55,7 @@ class GroupeManager extends AbstractManager
     public function getGroupBycode($code) : ?Groupe
     {
         $query = $this->db->prepare("SELECT groupe.id , groupe.name , groupe.budget, groupe.code FROM groupe
-                                            WHERE groupe.code = :code;");
+                                            WHERE groupe.code =  :code ;");
         $parametres = [
             ":code" => $code
         ];

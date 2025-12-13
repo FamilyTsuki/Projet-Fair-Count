@@ -54,6 +54,11 @@
                     $ctrl = new PageController(); 
                     $ctrl->created_group();
                 }
+                else if ($get["route"] === "created_groupv") 
+                {
+                    $ctrl = new GroupeController(); 
+                    $ctrl->create(); 
+                }
                 else if ($get["route"] === "join_group") 
                 {
                     $ctrl = new PageController(); 

@@ -1,20 +1,20 @@
-<h2 id="join_groupe_titre">Rejoindre un groupe existant</h2>
+<h2 class="groupe_titre">Rejoindre un groupe existant</h2>
 
 <?php if (isset($error) && $error){?>
-    <p style="color: red;"><?= htmlspecialchars($error) ?></p>
+    <p><?= htmlspecialchars($error) ?></p>
 <?php }?>
 
-<form method="POST" action="index.php?route=join_groupv" id="join_groupe"> 
+<form method="POST" action="index.php?route=join_groupv" class="groupe"> 
     
     <div>
         <label for="name">Nom du groupe </br></label>
-        <input type="text" id="name" name="name" required 
+        <input class="groupe_text_zone" type="text" id="name" name="name" required 
                value="<?= $_POST['name'] ?? '' ?>">
     </div>
 
     <div >
         <label for="code">Code d'invitation </br></label>
-        <input type="text" id="code" name="code" required 
+        <input  class="groupe_text_zone" type="text" id="code" name="code" required 
                value="<?= $_POST['code'] ?? '' ?>">
     </div>
 

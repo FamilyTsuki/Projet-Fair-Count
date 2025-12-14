@@ -1,4 +1,4 @@
-<h1> liste de vos groupe </h1>
+<h1 class="groupe_titre"> liste de vos groupe </h1>
 
 <table class = "stats-table">
     <thead>
@@ -20,9 +20,11 @@
         <?php } ?> 
     </tbody>
 </table>
-<form method="POST" action="index.php?route=join_group">
-    <button> Rejoindre un groupe </button>
-</form>
-<form method="POST" action="index.php?route=created_group">
-    <button> crer un groupe </button>
-</form>
+<div id="groupe"> 
+    <form method="POST" action="index.php?route=join_group" id="groupe">
+        <button class="group_bouton"> Rejoindre un groupe </button>
+    </form>
+    <form method="POST" action="index.php?route=created_group">
+        <button class="group_bouton"> crer un groupe </button>
+    </form>
+</div>

@@ -8,7 +8,7 @@
 
 <form method="POST" action="index.php?route=created_groupv">
     <div>
-        <label for="name">Nom du groupe :</label>
+        <label for="name">Nom du groupe </br></label>
         <input type="text" id="name" name="name" required 
                value="<?= $_POST['name'] ?? '' ?>" 
                aria-describedby="nameHelp">
@@ -16,12 +16,12 @@
     </div>
 
     <div>
-        <label for="code">Code d'invitation (4-8 caractères) :</label>
+        <label for="code">Code d'invitation (4-8 caractères)  </br> </label>
         <input type="text" id="code" name="code" required minlength="4" maxlength="8"
                value="<?= $_POST['code'] ?? '' ?>"
                aria-describedby="codeHelp">
         <small id="codeHelp">Un code unique que les autres utiliseront pour rejoindre le groupe.</small>
     </div>
 
-    <button type="submit">Créer le groupe</button>
+    <button class="group_bouton" type="submit">Créer le groupe</button>
 </form>

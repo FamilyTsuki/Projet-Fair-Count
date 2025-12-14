@@ -839,3 +839,29 @@ section.reboursemant .reimbursement-form-container {
     border: 1px solid #ddd;
 }
 
+#join_groupe {
+    text-align: center;
+    margin-top: 10%;
+    text-size-adjust: 200%;
+    border: black 1px solid;
+    padding: 20px;
+    margin: auto;
+    width: 40%;
+    border-radius: 25%;
+    box-shadow: #000000 4px 4px 10px;
+}
+#join_groupe_titre {
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 1%;
+}
+.group_bouton {
+    font-size: 1.2rem;
+    background-color: #0048ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
